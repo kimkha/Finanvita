@@ -5,8 +5,10 @@ import android.content.Intent;
 import com.kimkha.finance.R;
 import com.kimkha.finance.ui.ItemListActivity;
 import com.kimkha.finance.ui.ItemListFragment;
+import com.kimkha.finance.ui.StickyListActivity;
+import com.kimkha.finance.ui.StickyListFragment;
 
-public class TransactionListActivity extends ItemListActivity
+public class TransactionListActivity extends StickyListActivity
 {
     public static void start(Context context)
     {
@@ -15,7 +17,7 @@ public class TransactionListActivity extends ItemListActivity
     }
 
     @Override
-    protected ItemListFragment createListFragment(int selectionType, long[] itemIDs)
+    protected StickyListFragment createListFragment(int selectionType, long[] itemIDs)
     {
         return TransactionListFragment.newInstance(selectionType);
     }

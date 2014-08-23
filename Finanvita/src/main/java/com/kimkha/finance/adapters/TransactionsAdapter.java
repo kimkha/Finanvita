@@ -21,7 +21,7 @@ import java.util.Locale;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 
-public class TransactionsAdapter extends AbstractSectionedCursorAdapter implements StickyListHeadersAdapter
+public class TransactionsAdapter extends AbstractStickyCursorAdapter implements StickyListHeadersAdapter
 {
     private final int darkColor;
     private final int darkSecondaryColor;
@@ -179,8 +179,6 @@ public class TransactionsAdapter extends AbstractSectionedCursorAdapter implemen
         }
     }
 
-
-
     @Override
     protected void findIndexes(Cursor c)
     {
@@ -203,17 +201,17 @@ public class TransactionsAdapter extends AbstractSectionedCursorAdapter implemen
         iExchangeRate = c.getColumnIndex(Tables.Transactions.EXCHANGE_RATE);
     }
 
-    @Override
-    protected boolean isSectionExpanded(int section, Cursor c)
-    {
-        return true;
-    }
-
-    @Override
-    protected boolean onToggleSection(int section, boolean isExpanded, Cursor c)
-    {
-        return true;
-    }
+//    @Override
+//    protected boolean isSectionExpanded(int section, Cursor c)
+//    {
+//        return true;
+//    }
+//
+//    @Override
+//    protected boolean onToggleSection(int section, boolean isExpanded, Cursor c)
+//    {
+//        return true;
+//    }
 
     @Override
     protected String getIndexColumnValue(Cursor c)
@@ -222,13 +220,18 @@ public class TransactionsAdapter extends AbstractSectionedCursorAdapter implemen
     }
 
     @Override
-    protected String getRowSectionUniqueId(Cursor c)
-    {
-        return c.getInt(iState) == Tables.Transactions.State.PENDING ? "-1" : DateUtils.formatDateTime(mContext, c.getLong(iDate), DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_NO_MONTH_DAY);
+    protected long getSectionUniqueId(Cursor c) {
+        if (c.getInt(iState) == Tables.Transactions.State.PENDING)
+            return -1;
+
+        final long date = c.getLong(iDate);
+        calendar.setTimeInMillis(date);
+
+        return calendar.get(Calendar.MONTH);
     }
 
     @Override
-    protected View newHeaderView(Context context, int section, Cursor c, ViewGroup root)
+    protected View newHeaderView(Context context, Cursor c, ViewGroup root)
     {
         final View view = LayoutInflater.from(context).inflate(R.layout.li_h_transaction, root, false);
 
@@ -240,7 +243,7 @@ public class TransactionsAdapter extends AbstractSectionedCursorAdapter implemen
     }
 
     @Override
-    protected void bindHeaderView(View view, Context context, int section, Cursor c)
+    protected void bindHeaderView(View view, Context context, Cursor c)
     {
         final HeaderViewHolder holder = (HeaderViewHolder) view.getTag();
 
@@ -251,32 +254,52 @@ public class TransactionsAdapter extends AbstractSectionedCursorAdapter implemen
         holder.date_TV.setText(c.getInt(iState) == Tables.Transactions.State.PENDING ? context.getString(R.string.pending) : PeriodHelper.getPeriodTitle(context, PeriodHelper.TYPE_MONTH, date, date));
     }
 
-    @Override
-    public String getSessionTitle(int position) {
-        String title = super.getSessionTitle(position);
-
-        long val = 0;
-        try {
-            val = Long.valueOf(title);
-        } catch (NumberFormatException e) {
-            return "";
-        }
-
-        final DateTimeFormatterBuilder builder = new DateTimeFormatterBuilder();
-        builder.appendMonthOfYearText();
-
-        return builder.toFormatter().print(val);
-    }
-
-    @Override
-    public View getHeaderView(int position, View view, ViewGroup viewGroup) {
-        return null;
-    }
-
-    @Override
-    public long getHeaderId(int position) {
-        return 0;
-    }
+//    @Override
+//    protected String getRowSectionUniqueId(Cursor c)
+//    {
+//        return c.getInt(iState) == Tables.Transactions.State.PENDING ? "-1" : DateUtils.formatDateTime(mContext, c.getLong(iDate), DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_NO_MONTH_DAY);
+//    }
+//
+//    @Override
+//    protected View newHeaderView(Context context, int section, Cursor c, ViewGroup root)
+//    {
+//        final View view = LayoutInflater.from(context).inflate(R.layout.li_h_transaction, root, false);
+//
+//        final HeaderViewHolder holder = new HeaderViewHolder();
+//        holder.date_TV = (TextView) view.findViewById(R.id.date_TV);
+//        view.setTag(holder);
+//
+//        return view;
+//    }
+//
+//    @Override
+//    protected void bindHeaderView(View view, Context context, int section, Cursor c)
+//    {
+//        final HeaderViewHolder holder = (HeaderViewHolder) view.getTag();
+//
+//        // Get values
+//        final long date = c.getLong(iDate);
+//
+//        // Set values
+//        holder.date_TV.setText(c.getInt(iState) == Tables.Transactions.State.PENDING ? context.getString(R.string.pending) : PeriodHelper.getPeriodTitle(context, PeriodHelper.TYPE_MONTH, date, date));
+//    }
+//
+//    @Override
+//    public String getSessionTitle(int position) {
+//        String title = super.getSessionTitle(position);
+//
+//        long val = 0;
+//        try {
+//            val = Long.valueOf(title);
+//        } catch (NumberFormatException e) {
+//            return "";
+//        }
+//
+//        final DateTimeFormatterBuilder builder = new DateTimeFormatterBuilder();
+//        builder.appendMonthOfYearText();
+//
+//        return builder.toFormatter().print(val);
+//    }
 
     private static class ViewHolder
     {

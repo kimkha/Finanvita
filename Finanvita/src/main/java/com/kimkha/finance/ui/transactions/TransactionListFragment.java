@@ -22,17 +22,19 @@ import com.kimkha.finance.db.Tables;
 import com.kimkha.finance.providers.TransactionsProvider;
 import com.kimkha.finance.ui.ItemListFragment;
 import com.kimkha.finance.ui.MainActivity;
+import com.kimkha.finance.ui.StickyListFragment;
 import com.kimkha.finance.utils.FilterHelper;
 
 import org.joda.time.format.DateTimeFormatterBuilder;
 
 import de.greenrobot.event.EventBus;
 
-public class TransactionListFragment extends ItemListFragment implements MainActivity.NavigationContentFragment, AbsListView.OnScrollListener {
-    private TextView month_TV;
-    private TransactionsAdapter transactionAdapter;
-    private View header_month_V;
-    private View separator_V;
+public class TransactionListFragment extends StickyListFragment implements MainActivity.NavigationContentFragment//, AbsListView.OnScrollListener
+{
+//    private TextView month_TV;
+//    private TransactionsAdapter transactionAdapter;
+//    private View header_month_V;
+//    private View separator_V;
 
     public static TransactionListFragment newInstance(int selectionType)
     {
@@ -77,21 +79,21 @@ public class TransactionListFragment extends ItemListFragment implements MainAct
         EventBus.getDefault().register(this, FilterHelper.FilterChangedEvent.class);
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-    {
-        return inflater.inflate(R.layout.fragment_transaction_list, container, false);
-    }
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+//    {
+//        return inflater.inflate(R.layout.fragment_transaction_list, container, false);
+//    }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
 
-        // Get views
-        month_TV = (TextView) view.findViewById(R.id.month_TV);
-        header_month_V = view.findViewById(R.id.header_month_V);
-        separator_V = view.findViewById(R.id.separator_V);
+//        // Get views
+//        month_TV = (TextView) view.findViewById(R.id.month_TV);
+//        header_month_V = view.findViewById(R.id.header_month_V);
+//        separator_V = view.findViewById(R.id.separator_V);
     }
 
     @Override
@@ -99,10 +101,10 @@ public class TransactionListFragment extends ItemListFragment implements MainAct
     {
         super.onActivityCreated(savedInstanceState);
 
-        transactionAdapter = (TransactionsAdapter) adapter;
-
-        list_V.setOnScrollListener(this);
-        onScroll(list_V, 0, 1, list_V.getChildCount());
+//        transactionAdapter = (TransactionsAdapter) adapter;
+//
+//        list_V.setOnScrollListener(this);
+//        onScroll(list_V, 0, 1, list_V.getChildCount());
     }
 
     @Override
@@ -156,28 +158,28 @@ public class TransactionListFragment extends ItemListFragment implements MainAct
         TransactionEditActivity.startItemEdit(context, 0, view);
     }
 
-    @Override
-    public void onScrollStateChanged(AbsListView view, int scrollState) {
-
-    }
-
-    @Override
-    public void onScroll(AbsListView view, int position, int visibleItemCount, int totalItemCount) {
-        if (position < 0) {
-            header_month_V.setVisibility(View.INVISIBLE);
-            return;
-        }
-
-        if (position < totalItemCount - 1 && transactionAdapter.getItemViewType(position + 1) == TransactionsAdapter.TYPE_HEADER) {
-            header_month_V.setVisibility(View.VISIBLE);
-            return;
-        }
-
-        header_month_V.setVisibility(View.VISIBLE);
-
-        String title = transactionAdapter.getSessionTitle(position);
-        if (!TextUtils.isEmpty(title)) {
-            month_TV.setText(title);
-        }
-    }
+//    @Override
+//    public void onScrollStateChanged(AbsListView view, int scrollState) {
+//
+//    }
+//
+//    @Override
+//    public void onScroll(AbsListView view, int position, int visibleItemCount, int totalItemCount) {
+//        if (position < 0) {
+//            header_month_V.setVisibility(View.INVISIBLE);
+//            return;
+//        }
+//
+//        if (position < totalItemCount - 1 && transactionAdapter.getItemViewType(position + 1) == TransactionsAdapter.TYPE_HEADER) {
+//            header_month_V.setVisibility(View.VISIBLE);
+//            return;
+//        }
+//
+//        header_month_V.setVisibility(View.VISIBLE);
+//
+//        String title = transactionAdapter.getSessionTitle(position);
+//        if (!TextUtils.isEmpty(title)) {
+//            month_TV.setText(title);
+//        }
+//    }
 }

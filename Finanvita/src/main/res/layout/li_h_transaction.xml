@@ -7,4 +7,6 @@
     android:padding="@dimen/space_normal"
     android:textAllCaps="true"
     android:gravity="center"
-    android:textSize="@dimen/text_xxlarge" />
+    android:textSize="@dimen/text_xxlarge"
+    android:text="@string/month"
+    android:background="@color/bg_window"/>

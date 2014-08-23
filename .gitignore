@@ -5,6 +5,7 @@ lint.xml
 
 #IntelliJ IDEA
 .idea
+!/.idea/codeStyleSettings.xml
 *.iml
 *.ipr
 *.iws

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.kimkha.finance">
+
+    <!-- Application -->
+    <!-- ======================================================================================================== -->
+    <application>
+
+        <!-- Providers -->
+        <!-- ======================================================================================================== -->
+        <provider
+            android:name=".providers.AccountsProvider"
+            android:authorities="com.kimkha.finance.providers.AccountsProvider"
+            android:exported="false" />
+        <provider
+            android:name=".providers.CategoriesProvider"
+            android:authorities="com.kimkha.finance.providers.CategoriesProvider"
+            android:exported="false" />
+        <provider
+            android:name=".providers.TransactionsProvider"
+            android:authorities="com.kimkha.finance.providers.TransactionsProvider"
+            android:exported="false" />
+        <provider
+            android:name=".providers.CurrenciesProvider"
+            android:authorities="com.kimkha.finance.providers.CurrenciesProvider"
+            android:exported="false" />
+    </application>
+
+</manifest>

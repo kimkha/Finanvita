@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--<se.emilsjolander.stickylistheaders.StickyListHeadersListView-->
+        <!--android:id="@+id/list_V"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"/>-->
+
+    <ListView
+        android:id="@+id/list_V"
+        style="@style/ListView"
+        android:paddingLeft="@dimen/dynamic_margin_narrow_horizontal"
+        android:paddingRight="@dimen/dynamic_margin_narrow_horizontal"/>
+
+    <LinearLayout
+        android:id="@+id/header_month_V"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:paddingLeft="@dimen/space_large"
+        android:paddingRight="@dimen/space_large"
+        android:paddingTop="@dimen/space_normal"
+        android:paddingBottom="@dimen/space_normal"
+        android:gravity="center_vertical"
+        android:background="@color/bg_window"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/month_TV"
+            style="@style/TextView"
+            android:layout_width="match_parent"
+            android:fontFamily="sans-serif-light"
+            android:textAllCaps="true"
+            android:gravity="center"
+            android:text=" "
+            android:textSize="@dimen/text_xxlarge" />
+
+    </LinearLayout>
+
+    <!--<View-->
+        <!--android:id="@+id/separator_V"-->
+        <!--style="@style/Separator"-->
+        <!--android:layout_below="@+id/header_month_V" />-->
+
+</RelativeLayout>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.kimkha.finance">
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="18" />
+
+    <!-- Permissions -->
+    <!-- ======================================================================================================== -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+
+    <!-- Application -->
+    <!-- ======================================================================================================== -->
+    <application
+        android:name="com.kimkha.finance.App"
+        android:hardwareAccelerated="true"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+
+        <!-- Activities -->
+        <!-- ======================================================================================================== -->
+        <activity
+            android:name="com.kimkha.finance.ui.MainActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.kimkha.finance.ui.AboutActivity" />
+
+        <activity android:name="com.kimkha.finance.ui.settings.SettingsActivity" />
+        <activity android:name="com.kimkha.finance.ui.settings.lock.LockActivity" />
+        <activity android:name="com.kimkha.finance.ui.settings.donate.DonateActivity" />
+
+        <activity android:name="com.kimkha.finance.ui.currencies.CurrencyListActivity" />
+        <activity android:name="com.kimkha.finance.ui.currencies.CurrencyItemActivity" />
+        <activity android:name="com.kimkha.finance.ui.currencies.CurrencyEditActivity" />
+
+        <activity android:name="com.kimkha.finance.ui.accounts.AccountListActivity" />
+        <activity android:name="com.kimkha.finance.ui.accounts.AccountItemActivity" />
+        <activity android:name="com.kimkha.finance.ui.accounts.AccountEditActivity" />
+
+        <activity android:name="com.kimkha.finance.ui.transactions.CalculatorActivity" />
+        <activity android:name="com.kimkha.finance.ui.transactions.TransactionListActivity" />
+        <activity android:name="com.kimkha.finance.ui.transactions.TransactionItemActivity" />
+        <activity android:name="com.kimkha.finance.ui.transactions.TransactionEditActivity" />
+
+        <activity android:name="com.kimkha.finance.ui.categories.CategoryListActivity" />
+        <activity android:name="com.kimkha.finance.ui.categories.CategoryItemActivity" />
+        <activity android:name="com.kimkha.finance.ui.categories.CategoryEditActivity" />
+
+        <activity android:name="com.kimkha.finance.ui.reports.CategoriesReportActivity" />
+
+        <activity android:name="com.kimkha.finance.ui.backup.BackupActivity" />
+        <activity android:name="com.kimkha.finance.ui.backup.YourDataActivity" />
+
+        <!-- Services -->
+        <!-- ======================================================================================================== -->
+        <service android:name="com.kimkha.finance.services.CurrenciesRestService" />
+        <service android:name="com.kimkha.finance.services.CategoriesService" />
+        <service android:name="com.kimkha.finance.services.BackupService" />
+        <service
+            android:name="com.kimkha.finance.services.DashClockService"
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/app_name"
+            android:permission="com.google.android.apps.dashclock.permission.READ_EXTENSION_DATA">
+            <intent-filter>
+                <action android:name="com.google.android.apps.dashclock.Extension" />
+            </intent-filter>
+
+            <meta-data
+                android:name="protocolVersion"
+                android:value="1" />
+            <meta-data
+                android:name="description"
+                android:value="@string/l_dashclock_desc" />
+        </service>
+
+        <meta-data android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+    </application>
+
+</manifest>

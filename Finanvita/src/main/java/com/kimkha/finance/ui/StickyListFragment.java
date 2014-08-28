@@ -101,7 +101,7 @@ public abstract class StickyListFragment extends BaseFragment implements Adapter
         list_V.setAdapter((AbstractStickyCursorAdapter) adapter);
         if (selectionType == SELECTION_TYPE_NONE)
         {
-            create_V = LayoutInflater.from(getActivity()).inflate(R.layout.li_create_new, list_V, false);
+            create_V = LayoutInflater.from(getActivity()).inflate(R.layout.li_create_new, null, false);
             list_V.addFooterView(create_V);
         }
         list_V.setOnItemClickListener(this);

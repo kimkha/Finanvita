@@ -34,7 +34,7 @@
 
             <fragment
                 android:id="@+id/notificationsDrawer_F"
-                class="com.kimkha.finance.ui.NotificationsFragment"
+                class="com.kimkha.finanvita.ui.NotificationsFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:layout="@layout/fragment_notifications" />

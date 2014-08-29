@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper
 {
-    private static final String NAME = "finance.db";
+    private static final String NAME = "finanvita.db";
     private static final int VERSION = 18;
     // -----------------------------------------------------------------------------------------------------------------
     private static DBHelper singleton = null;

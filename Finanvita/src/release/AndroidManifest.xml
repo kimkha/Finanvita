@@ -10,19 +10,19 @@
         <!-- ======================================================================================================== -->
         <provider
             android:name=".providers.AccountsProvider"
-            android:authorities="com.kimkha.finance.providers.AccountsProvider"
+            android:authorities="com.kimkha.finanvita.providers.AccountsProvider"
             android:exported="false" />
         <provider
             android:name=".providers.CategoriesProvider"
-            android:authorities="com.kimkha.finance.providers.CategoriesProvider"
+            android:authorities="com.kimkha.finanvita.providers.CategoriesProvider"
             android:exported="false" />
         <provider
             android:name=".providers.TransactionsProvider"
-            android:authorities="com.kimkha.finance.providers.TransactionsProvider"
+            android:authorities="com.kimkha.finanvita.providers.TransactionsProvider"
             android:exported="false" />
         <provider
             android:name=".providers.CurrenciesProvider"
-            android:authorities="com.kimkha.finance.providers.CurrenciesProvider"
+            android:authorities="com.kimkha.finanvita.providers.CurrenciesProvider"
             android:exported="false" />
     </application>
 

@@ -17,7 +17,7 @@
         android:focusableInTouchMode="true"
         android:orientation="vertical">
 
-        <com.kimkha.finance.views.cards.AmountCardView
+        <com.kimkha.finanvita.views.cards.AmountCardView
             android:id="@+id/amount_CV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -29,7 +29,7 @@
             android:animateLayoutChanges="true"
             android:orientation="horizontal">
 
-            <com.kimkha.finance.views.cards.AccountCardView
+            <com.kimkha.finanvita.views.cards.AccountCardView
                 android:id="@+id/accountFrom_CV"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -43,20 +43,20 @@
                 tools:visibility="visible"
                 tools:ignore="HardcodedText" />
 
-            <com.kimkha.finance.views.cards.AccountCardView
+            <com.kimkha.finanvita.views.cards.AccountCardView
                 android:id="@+id/accountTo_CV"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
         </LinearLayout>
 
-        <com.kimkha.finance.views.cards.CategoryCardView
+        <com.kimkha.finanvita.views.cards.CategoryCardView
             android:id="@+id/category_CV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_normal" />
 
-        <com.kimkha.finance.views.cards.EditTextCardView
+        <com.kimkha.finanvita.views.cards.EditTextCardView
             android:id="@+id/note_CV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -67,14 +67,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_normal">
 
-            <com.kimkha.finance.views.cards.DateCardView
+            <com.kimkha.finanvita.views.cards.DateCardView
                 android:id="@+id/date_CV"
                 android:layout_width="0dp"
                 android:layout_weight="3"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/space_small" />
 
-            <com.kimkha.finance.views.cards.TimeCardView
+            <com.kimkha.finanvita.views.cards.TimeCardView
                 android:id="@+id/time_CV"
                 android:layout_width="0dp"
                 android:layout_weight="2"

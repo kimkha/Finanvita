@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.kimkha.finance.views.PeriodChangerView
+    <com.kimkha.finanvita.views.PeriodChangerView
         android:id="@+id/periodChanger_V"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize" />
@@ -31,7 +31,7 @@
                 android:paddingLeft="@dimen/space_large"
                 android:orientation="vertical">
 
-                <com.kimkha.finance.views.reports.PieChartView
+                <com.kimkha.finanvita.views.reports.PieChartView
                     android:id="@+id/pieChart_V"
                     android:layout_width="wrap_content"
                     android:layout_height="192dp"

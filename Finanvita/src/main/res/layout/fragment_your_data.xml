@@ -12,19 +12,19 @@
         android:paddingRight="@dimen/dynamic_margin_card_horizontal"
         android:orientation="vertical">
 
-        <com.kimkha.finance.views.cards.BackupCardView
+        <com.kimkha.finanvita.views.cards.BackupCardView
             android:id="@+id/backup_CV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dynamic_margin_card_vertical"/>
 
-        <com.kimkha.finance.views.cards.BackupCardView
+        <com.kimkha.finanvita.views.cards.BackupCardView
             android:id="@+id/restore_CV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dynamic_margin_card_vertical"/>
 
-        <com.kimkha.finance.views.cards.CSVCardView
+        <com.kimkha.finanvita.views.cards.CSVCardView
             android:id="@+id/csv_CV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

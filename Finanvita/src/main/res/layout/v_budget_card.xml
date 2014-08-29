@@ -21,7 +21,7 @@
 
     </LinearLayout>
 
-    <com.kimkha.finance.views.reports.BudgetView
+    <com.kimkha.finanvita.views.reports.BudgetView
         android:id="@+id/budget_V"
         android:layout_width="match_parent"
         android:layout_height="@dimen/budget_view_height_big"

@@ -21,7 +21,7 @@
 
     </LinearLayout>
 
-    <com.kimkha.finance.views.reports.ExpenseGraphView
+    <com.kimkha.finanvita.views.reports.ExpenseGraphView
         android:id="@+id/expenseGraph_V"
         android:layout_width="match_parent"
         android:layout_height="@dimen/recommended_touch_size"

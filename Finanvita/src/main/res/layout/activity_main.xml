@@ -19,7 +19,7 @@
 
         <fragment
             android:id="@+id/navigationDrawer_F"
-            class="com.kimkha.finance.ui.NavigationFragment"
+            class="com.kimkha.finanvita.ui.NavigationFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:layout="@layout/fragment_navigation" />
@@ -33,7 +33,7 @@
 
         <fragment
             android:id="@+id/filter_F"
-            class="com.kimkha.finance.ui.FilterFragment"
+            class="com.kimkha.finanvita.ui.FilterFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:layout="@layout/fragment_notifications" />

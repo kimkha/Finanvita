@@ -12,17 +12,17 @@
         android:divider="?android:dividerHorizontal"
         android:animateLayoutChanges="true">
 
-        <com.kimkha.finance.views.FilterToggleView
+        <com.kimkha.finanvita.views.FilterToggleView
             android:id="@+id/periodFilter_V"
             style="@style/Button.Borderless.Filter"
             android:layout_width="match_parent" />
 
-        <com.kimkha.finance.views.FilterToggleView
+        <com.kimkha.finanvita.views.FilterToggleView
             android:id="@+id/accountsFilter_V"
             style="@style/Button.Borderless.Filter"
             android:layout_width="match_parent" />
 
-        <com.kimkha.finance.views.FilterToggleView
+        <com.kimkha.finanvita.views.FilterToggleView
             android:id="@+id/categoriesFilter_V"
             style="@style/Button.Borderless.Filter"
             android:layout_width="match_parent" />

@@ -18,7 +18,7 @@
         android:textSize="@dimen/text_large"
         tools:ignore="SelectableText" />
 
-    <com.kimkha.finance.ui.settings.lock.LockPatternView
+    <com.kimkha.finanvita.ui.settings.lock.LockPatternView
         android:id="@+id/lockPattern_V"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

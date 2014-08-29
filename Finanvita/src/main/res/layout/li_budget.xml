@@ -7,7 +7,7 @@
         android:id="@+id/title_TV"
         style="@style/TextView" />
 
-    <com.kimkha.finance.views.reports.BudgetView
+    <com.kimkha.finanvita.views.reports.BudgetView
         android:id="@+id/budget_V"
         android:layout_width="match_parent"
         android:layout_height="@dimen/budget_view_height"

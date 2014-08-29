@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <com.kimkha.finance.views.reports.PieChartView
+        <com.kimkha.finanvita.views.reports.PieChartView
             android:id="@+id/pieChart_V"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -40,7 +40,7 @@
             android:layout_height="match_parent"
             android:layout_weight="2">
 
-            <com.kimkha.finance.views.reports.PieChartLegendView
+            <com.kimkha.finanvita.views.reports.PieChartLegendView
                 android:id="@+id/pieChartLegend_V"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />

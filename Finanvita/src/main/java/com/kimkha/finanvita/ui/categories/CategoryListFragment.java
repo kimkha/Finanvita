@@ -154,6 +154,9 @@ public class CategoryListFragment extends ItemListFragment
         ((DragSortListView) list_V).setFloatViewManager(c);
         ((DragSortListView) list_V).setDropListener((DragSortListView.DropListener) adapter);
         list_V.setOnTouchListener(c);
+
+        // Loader
+        getLoaderManager().initLoader(LOADER_ITEMS, null, this);
     }
 
     @Override

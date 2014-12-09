@@ -85,7 +85,7 @@ public abstract class GoogleApiFragment extends Fragment implements GoogleApiCli
     }
 
     @Override
-    public void onDisconnected()
+    public void onConnectionSuspended(int i)
     {
         sendEventDisconnected();
     }

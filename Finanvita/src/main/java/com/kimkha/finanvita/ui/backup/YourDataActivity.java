@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.format.DateUtils;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.ResultCallback;
 import com.kimkha.finanvita.App;
 import com.kimkha.finanvita.R;
 import com.kimkha.finanvita.api.parsers.BackupParser;
@@ -32,7 +33,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 
-public class YourDataActivity extends BaseActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, YourDataFragment.Callbacks, DriveApi.OnNewContentsCallback, DriveFolder.OnCreateFileCallback
+public class YourDataActivity extends BaseActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, YourDataFragment.Callbacks
 {
     private static final String FRAGMENT_ERROR_DIALOG = "FRAGMENT_ERROR_DIALOG";
     // ---------------------------------------------------------------------------------------------
@@ -40,7 +41,7 @@ public class YourDataActivity extends BaseActivity implements GoogleApiClient.Co
     private static final int REQUEST_GOOGLE_PLAY_SERVICES = 9001;
     private static final int REQUEST_FILE = 9002;
     // ---------------------------------------------------------------------------------------------
-    private static final DriveId FINANCIUS_FOLDER_ID = DriveId.createFromResourceId("0B2EEtIjPUdX6MERsWlYxN3J6RU0");
+    //private static final DriveId FINANCIUS_FOLDER_ID = DriveId.createFromResourceId("0B2EEtIjPUdX6MERsWlYxN3J6RU0");
     // ---------------------------------------------------------------------------------------------
     private GoogleApiClient client;
     private boolean doBackup = false;
@@ -109,7 +110,7 @@ public class YourDataActivity extends BaseActivity implements GoogleApiClient.Co
     }
 
     @Override
-    public void onDisconnected()
+    public void onConnectionSuspended(int i)
     {
 
     }
@@ -146,7 +147,6 @@ public class YourDataActivity extends BaseActivity implements GoogleApiClient.Co
         connectClient();
     }
 
-    @Override
     public void onNewContents(DriveApi.ContentsResult result)
     {
         if (!result.getStatus().isSuccess())
@@ -160,10 +160,14 @@ public class YourDataActivity extends BaseActivity implements GoogleApiClient.Co
                 .setMimeType("application/json")
                 .setStarred(false).build();
 
-        Drive.DriveApi.getRootFolder(client).createFile(client, changeSet, result.getContents()).addResultCallback(this);
+        Drive.DriveApi.getRootFolder(client).createFile(client, changeSet, result.getContents()).setResultCallback(new ResultCallback<DriveFolder.DriveFileResult>() {
+            @Override
+            public void onResult(DriveFolder.DriveFileResult driveFileResult) {
+                onCreateFile(driveFileResult);
+            }
+        });
     }
 
-    @Override
     public void onCreateFile(DriveFolder.DriveFileResult result)
     {
         if (!result.getStatus().isSuccess())
@@ -215,7 +219,12 @@ public class YourDataActivity extends BaseActivity implements GoogleApiClient.Co
     {
         if (doBackup)
         {
-            Drive.DriveApi.newContents(client).addResultCallback(this);
+            Drive.DriveApi.newContents(client).setResultCallback(new ResultCallback<DriveApi.ContentsResult>() {
+                @Override
+                public void onResult(DriveApi.ContentsResult contentsResult) {
+                    onNewContents(contentsResult);
+                }
+            });
         }
 
         if (doRestore)

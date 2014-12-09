@@ -8,7 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 
@@ -19,7 +21,7 @@ import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
  */
 public abstract class AbstractStickyCursorAdapter extends AbstractCursorAdapter implements StickyListHeadersAdapter
 {
-    private List<String> allItems;
+    private Map<Integer, Long> allItems;
 
     private DataSetObserver mDataSetObserver = new DataSetObserver()
     {
@@ -37,7 +39,7 @@ public abstract class AbstractStickyCursorAdapter extends AbstractCursorAdapter 
     public AbstractStickyCursorAdapter(Context context, Cursor c) {
         super(context, c);
 
-        this.allItems = new ArrayList<String>();
+        this.allItems = new HashMap<Integer, Long>();
 
         if (c != null)
         {
@@ -77,11 +79,12 @@ public abstract class AbstractStickyCursorAdapter extends AbstractCursorAdapter 
 
     @Override
     public long getItemId(int position) {
-        return position;
+        return getCursorPosition(position);
     }
 
     @Override
     public View getHeaderView(int position, View convertView, ViewGroup parent) {
+        //position = getCursorPosition(position);
         if (!mDataValid) {
             throw new IllegalStateException("this should only be called when the cursor is valid");
         }
@@ -117,19 +120,27 @@ public abstract class AbstractStickyCursorAdapter extends AbstractCursorAdapter 
 
     protected abstract void bindHeaderView(View view, Context context, Cursor c);
 
+    private long getCursorPosition(int position) {
+        return allItems.get(position);
+    }
+
     private void prepareIndexer(Cursor c) {
         allItems.clear();
 
         if (c == null || !c.moveToFirst())
             return;
 
-        String val;
+        long val;
+        int i=0;
         do {
-            val = getIndexColumnValue(c);
-            if (TextUtils.isEmpty(val))
-                val = "";
-
-            allItems.add(val);
+            try {
+                val = Long.parseLong(getIndexColumnValue(c));
+            } catch (Exception e) {
+                i++;
+                continue;
+            }
+            allItems.put(i, val);
+            i++;
         } while (c.moveToNext());
     }
 

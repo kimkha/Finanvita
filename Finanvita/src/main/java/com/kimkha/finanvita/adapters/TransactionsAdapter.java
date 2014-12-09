@@ -45,6 +45,7 @@ public class TransactionsAdapter extends AbstractStickyCursorAdapter implements 
     private int iNote;
     private int iState;
     private int iExchangeRate;
+    private int iID;
 
     public TransactionsAdapter(Context context)
     {
@@ -197,6 +198,7 @@ public class TransactionsAdapter extends AbstractStickyCursorAdapter implements 
         iNote = c.getColumnIndex(Tables.Transactions.NOTE);
         iState = c.getColumnIndex(Tables.Transactions.STATE);
         iExchangeRate = c.getColumnIndex(Tables.Transactions.EXCHANGE_RATE);
+        iID = c.getColumnIndex(Tables.Transactions.ID);
     }
 
 //    @Override
@@ -214,7 +216,7 @@ public class TransactionsAdapter extends AbstractStickyCursorAdapter implements 
     @Override
     protected String getIndexColumnValue(Cursor c)
     {
-        return c.getString(iDate);
+        return c.getString(iID);
     }
 
     @Override

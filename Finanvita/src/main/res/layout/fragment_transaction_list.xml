@@ -3,16 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--<se.emilsjolander.stickylistheaders.StickyListHeadersListView-->
-        <!--android:id="@+id/list_V"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"/>-->
-
-    <ListView
+    <se.emilsjolander.stickylistheaders.StickyListHeadersListView
         android:id="@+id/list_V"
-        style="@style/ListView"
-        android:paddingLeft="@dimen/dynamic_margin_narrow_horizontal"
-        android:paddingRight="@dimen/dynamic_margin_narrow_horizontal"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <!--<ListView-->
+        <!--android:id="@+id/list_V"-->
+        <!--style="@style/ListView"-->
+        <!--android:paddingLeft="@dimen/dynamic_margin_narrow_horizontal"-->
+        <!--android:paddingRight="@dimen/dynamic_margin_narrow_horizontal"/>-->
 
     <LinearLayout
         android:id="@+id/header_month_V"

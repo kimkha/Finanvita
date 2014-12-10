@@ -2,7 +2,7 @@ import java.text.SimpleDateFormat
 
 buildscript {
     repositories { mavenCentral() }
-    dependencies { classpath 'com.android.tools.build:gradle:0.13.+' }
+    dependencies { classpath 'com.android.tools.build:gradle:1.0.+' }
 }
 
 apply plugin: 'com.android.application'

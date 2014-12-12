@@ -19,7 +19,7 @@ public class SecurityHelper
     // --------------------------------------------------------------------------------------------------------------------------------
     public static final long DEFAULT_APP_UNLOCK_DURATION = DateUtils.MINUTE_IN_MILLIS;
     // --------------------------------------------------------------------------------------------------------------------------------
-    public static final String p3 = "3kfwiRx20UM0Igj8f6TQwHgEUsyKqYMe1Ol0oUC0LxLFeMXPYPInrxI/MHn4";
+    public static final String p3 = "/1cpdIA6oGAOp5q3zjA9zLZNIOaUYCZKlTD68Rz7ReGUZqXKjq9yIy44qtrhLFokakk9/UNINI87syK16";
     // --------------------------------------------------------------------------------------------------------------------------------
     private static SecurityHelper instance = null;
     private Context context;

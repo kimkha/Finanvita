@@ -32,15 +32,15 @@ import java.util.Map;
 
 public class DonateActivity extends BaseActivity implements IabHelper.QueryInventoryFinishedListener, IabHelper.OnConsumeFinishedListener, IabHelper.OnConsumeMultiFinishedListener, IabHelper.OnIabPurchaseFinishedListener, View.OnClickListener
 {
-    public static final String SKU_DONATE_1 = "donate_1";
-    public static final String SKU_DONATE_2 = "donate_2";
+    public static final String SKU_DONATE_1 = "kimkha.finanvita.test.1";
+    public static final String SKU_DONATE_2 = "kimkha.finanvita.test.2";
     public static final String SKU_DONATE_3 = "donate_3";
     public static final String SKU_DONATE_4 = "donate_4";
     public static final String SKU_DONATE_5 = "donate_5";
     // ---------------------------------------------------------------------------------------------
     private static final String p1 = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQE";
-    private static final String p4 = "JSeOiVL3c1DAOxC2/6A61DWsqQOHOYpKHoZglL3c/NHBsbzwSbJrEdbJCKipcniAHdTiGA2ozAQDk";
-    private static final String p6 = "97EMtsLxgrkUf3/fprakq33vo7PKbm5l3hPBuGeO+nJhIMeSms0IIErkstJH593CeAZ9QIbaYJIytLfrNq3dZtooXBuR3QQIDAQAB";
+    private static final String p4 = "OYwV0OdgVPHVxP51mhcPoQ6T3tspIoWtBpfHQsYEO90oVmOPpd/MW1bsgoc8FK+h+CFNT";
+    private static final String p6 = "fCm/4r0+qIlo5joiNAN+QSfyDG2TPmj3Lq8C+iWFuYv0PC0goGhWivJt/f/FQ2Ypv5P/tKftQTBATMduwIDAQAB";
     // -----------------------------------------------------------------------------------------------------------------
     private static final int REQUEST_DONATE = 1;
     // -----------------------------------------------------------------------------------------------------------------
@@ -87,7 +87,7 @@ public class DonateActivity extends BaseActivity implements IabHelper.QueryInven
         });
 
         // Setup billing
-        billingHelper = new IabHelper(this, p1 + "Ay+WnMitUf3lHTifPBZMBJYfseutMrgna88TJZ" + SecurityHelper.p3 + p4 + "HNcbX4+/yG1doAm7eIBKryReTM1gTMxEzJj1nzJGsKlEqOMBMq09OsCQfoHiCfnLKtf+NSpDV" + p6);
+        billingHelper = new IabHelper(this, p1 + "AyyjHawqxtG3VRSOGSkaoOKmN+ReEb8RI9rPMcj6OYuTzp" + SecurityHelper.p3 + p4 + "iEtoNczgazl7oVDfbaxM9OSt0zS0z27h364pwvRBb2lTjEQ6uXHDzJZzpoC+k3qCE8" + p6);
         if (BuildConfig.DEBUG)
             billingHelper.enableDebugLogging(true);
         billingHelper.startSetup(new IabHelper.OnIabSetupFinishedListener()
@@ -110,6 +110,8 @@ public class DonateActivity extends BaseActivity implements IabHelper.QueryInven
 
                 // Hooray, IAB is fully set up. Now, let's get an inventory of stuff we own.
                 billingHelper.queryInventoryAsync(true, skuList, DonateActivity.this);
+
+                //billingHelper.queryInventoryAsync(DonateActivity.this);
             }
         });
     }

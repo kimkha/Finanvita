@@ -21,43 +21,18 @@ public class Tracking
         EasyTracker.getInstance(activity).activityStop(activity);
     }
 
-    public static void onPurchaseCompleted(Context context, Purchase purchase)
+    public static void onPurchaseCompleted(Context context, Purchase purchase, DonateActivity.Product product)
     {
         String productName = "Donate";
-        double totalRevenue = 0;
-        if (purchase.getSku().equals(DonateActivity.SKU_DONATE_1))
-        {
-            productName = "Donate 0.99";
-            totalRevenue = 0.99;
-        }
-        else if (purchase.getSku().equals(DonateActivity.SKU_DONATE_2))
-        {
-            productName = "Donate 1.99";
-            totalRevenue = 1.99;
-        }
-        else if (purchase.getSku().equals(DonateActivity.SKU_DONATE_3))
-        {
-            productName = "Donate 4.99";
-            totalRevenue = 4.99;
-        }
-        else if (purchase.getSku().equals(DonateActivity.SKU_DONATE_4))
-        {
-            productName = "Donate 9.99";
-            totalRevenue = 9.99;
-        }
-        else if (purchase.getSku().equals(DonateActivity.SKU_DONATE_5))
-        {
-            productName = "Donate 19.99";
-            totalRevenue = 19.99;
-        }
-
+        double totalRevenue = product.getPriceAmount();
+        productName += totalRevenue;
 
         final String transactionId = UUID.randomUUID().toString();
 
         final EasyTracker easyTracker = EasyTracker.getInstance(context);
         easyTracker.send(MapBuilder
                 .createTransaction(transactionId,       // (String) Transaction ID
-                        "In-app Store",                 // (String) Affiliation
+                        "In-app Product",               // (String) Affiliation
                         totalRevenue,                   // (Double) Order revenue
                         0.3d,                           // (Double) Tax
                         0.0d,                           // (Double) Shipping

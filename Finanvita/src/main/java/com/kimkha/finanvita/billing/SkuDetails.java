@@ -26,8 +26,10 @@ public class SkuDetails {
     String mSku;
     String mType;
     String mPrice;
+    double mPriceAmount;
     String mTitle;
     String mDescription;
+    String mCurrency;
     String mJson;
 
     public SkuDetails(String jsonSkuDetails) throws JSONException {
@@ -41,13 +43,17 @@ public class SkuDetails {
         mSku = o.optString("productId");
         mType = o.optString("type");
         mPrice = o.optString("price");
+        mPriceAmount = o.optDouble("price_amount_micros")/1000000;
         mTitle = o.optString("title");
         mDescription = o.optString("description");
+        mCurrency = o.optString("price_currency_code");
     }
 
     public String getSku() { return mSku; }
     public String getType() { return mType; }
     public String getPrice() { return mPrice; }
+    public double getPriceAmount() { return mPriceAmount; }
+    public String getCurrency() { return mCurrency; }
     public String getTitle() { return mTitle; }
     public String getDescription() { return mDescription; }
 

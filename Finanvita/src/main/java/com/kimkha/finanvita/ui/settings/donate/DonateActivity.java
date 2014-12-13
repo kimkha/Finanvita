@@ -166,7 +166,8 @@ public class DonateActivity extends BaseActivity implements IabHelper.QueryInven
             if (inventory.hasDetails(sku))
             {
                 SkuDetails details = inventory.getSkuDetails(sku);
-                Product product = new Product(sku, details.getTitle().replace("(Finanvita - Expense Manager)", ""), details.getDescription(), details.getPrice());
+                Product product = new Product(sku, details.getTitle().replace("(Finanvita - Expense Manager)", ""),
+                        details.getDescription(), details.getPrice(), details.getPriceAmount(), details.getCurrency());
 
                 purchase = inventory.getPurchase(sku);
                 if (purchase != null && verifyDeveloperPayload(purchase))
@@ -231,11 +232,12 @@ public class DonateActivity extends BaseActivity implements IabHelper.QueryInven
             return;
         }
 
-        products.get(purchase.getSku()).setEnabled(false);
+        Product product = products.get(purchase.getSku());
+        product.setEnabled(false);
         updateUI();
 
         billingHelper.consumeAsync(purchase, this);
-        Tracking.onPurchaseCompleted(this, purchase);
+        Tracking.onPurchaseCompleted(this, purchase, product);
 
         new AlertDialog.Builder(this).setMessage(R.string.l_donate_thank_donate).setNeutralButton(R.string.ok, null).create().show();
     }
@@ -313,20 +315,24 @@ public class DonateActivity extends BaseActivity implements IabHelper.QueryInven
         }
     }
 
-    private static class Product
+    public static class Product
     {
         private String sku;
         private String title;
         private String description;
         private String price;
+        private double priceAmount;
+        private String currency;
         private boolean isEnabled;
 
-        private Product(String sku, String title, String description, String price)
+        private Product(String sku, String title, String description, String price, double priceAmount, String currency)
         {
             this.sku = sku;
             this.title = title;
             this.description = description;
             this.price = price;
+            this.priceAmount = priceAmount;
+            this.currency = currency;
             this.isEnabled = false;
         }
 
@@ -348,6 +354,16 @@ public class DonateActivity extends BaseActivity implements IabHelper.QueryInven
         public String getPrice()
         {
             return price;
+        }
+
+        public double getPriceAmount()
+        {
+            return priceAmount;
+        }
+
+        public String getCurrency()
+        {
+            return currency;
         }
 
         public boolean isEnabled()

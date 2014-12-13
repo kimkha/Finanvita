@@ -26,17 +26,20 @@ import com.kimkha.finanvita.utils.SecurityHelper;
 import com.kimkha.finanvita.utils.Tracking;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class DonateActivity extends BaseActivity implements IabHelper.QueryInventoryFinishedListener, IabHelper.OnConsumeFinishedListener, IabHelper.OnConsumeMultiFinishedListener, IabHelper.OnIabPurchaseFinishedListener, View.OnClickListener
 {
-    public static final String SKU_DONATE_1 = "kimkha.finanvita.test.1";
-    public static final String SKU_DONATE_2 = "kimkha.finanvita.test.2";
-    public static final String SKU_DONATE_3 = "android.test.purchased";
-    public static final String SKU_DONATE_4 = "donate_4";
-    public static final String SKU_DONATE_5 = "donate_5";
+    public static final List<String> SKU_DONATE_DEFAULT = Arrays.asList(
+            "finanvita.donate.1",
+            "finanvita.donate.2",
+            "finanvita.donate.3",
+            "finanvita.donate.4",
+            "finanvita.donate.5"
+    );
     // ---------------------------------------------------------------------------------------------
     private static final String p1 = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQE";
     private static final String p4 = "OYwV0OdgVPHVxP51mhcPoQ6T3tspIoWtBpfHQsYEO90oVmOPpd/MW1bsgoc8FK+h+CFNT";
@@ -101,12 +104,7 @@ public class DonateActivity extends BaseActivity implements IabHelper.QueryInven
                     return;
                 }
 
-                List<String> skuList = new ArrayList<String>();
-                skuList.add(SKU_DONATE_1);
-                skuList.add(SKU_DONATE_2);
-                skuList.add(SKU_DONATE_3);
-                skuList.add(SKU_DONATE_4);
-                skuList.add(SKU_DONATE_5);
+                List<String> skuList = SKU_DONATE_DEFAULT;
 
                 // Hooray, IAB is fully set up. Now, let's get an inventory of stuff we own.
                 billingHelper.queryInventoryAsync(true, skuList, DonateActivity.this);
@@ -160,11 +158,10 @@ public class DonateActivity extends BaseActivity implements IabHelper.QueryInven
             return;
         }
 
-        final String[] donateSKUs = {SKU_DONATE_1, SKU_DONATE_2, SKU_DONATE_3, SKU_DONATE_4, SKU_DONATE_5};
         final List<Purchase> purchaseToConsume = new ArrayList<Purchase>();
         Purchase purchase;
         products.clear();
-        for (String sku : donateSKUs)
+        for (String sku : SKU_DONATE_DEFAULT)
         {
             if (inventory.hasDetails(sku))
             {
@@ -296,7 +293,7 @@ public class DonateActivity extends BaseActivity implements IabHelper.QueryInven
     {
         container_V.removeAllViews();
 
-        String[] skuArray = {SKU_DONATE_1, SKU_DONATE_2, SKU_DONATE_3, SKU_DONATE_4, SKU_DONATE_5};
+        List<String> skuArray = SKU_DONATE_DEFAULT;
 
         Product product;
         for (String sku : skuArray)

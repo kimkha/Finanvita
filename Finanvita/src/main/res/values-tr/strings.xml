@@ -130,7 +130,7 @@
     <string name="l_backup_delete">Yedeği silmek istediğinizden emin misiniz?</string>
     <string name="l_auto_search_categories_on">Arama otomatik olarak başlayacak</string>
     <string name="l_auto_search_categories_off">Arama otomatik olarak başlamayacak</string>
-    <string name="l_donate_greet">Merhaba, Ben Mantas Varnagiris, Finanvita\'un geliştiricisi</string>
+    <string name="l_donate_greet">Merhaba, Ben Nguyen Kim Kha, Finanvita\'un geliştiricisi</string>
     <string name="l_donate_thank">Uygulamamı kullandığınız için teşekkürler. Umarım ki size biraz para kazandırmıştır. Lütfen benim de biraz para kazanmam için yardım etmeyi düşünün :)</string>
     <string name="l_donate_thank_donate">Finanvita\'un gelişimine desteğiniz için teşekkürler!</string>
     <string name="app_lock">Uygulama kilidi</string>

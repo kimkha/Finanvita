@@ -130,7 +130,7 @@
     <string name="l_backup_delete">Вы уверены, что хотите удалить резервную копию?</string>
     <string name="l_auto_search_categories_on">Поиск начнётся автоматически</string>
     <string name="l_auto_search_categories_off">Поиск НЕ начнётся автоматически</string>
-    <string name="l_donate_greet">Привет, я Мантас Варнагирис, разработчик Finanvita</string>
+    <string name="l_donate_greet">Привет, я Nguyen Kim Kha, разработчик Finanvita</string>
     <string name="l_donate_thank">Спасибо за использование моего приложения. Надеюсь, оно сэкономило вам деньги. Пожалуйста, сэкономьте немного и мне :)</string>
     <string name="l_donate_thank_donate">Спасибо за поддержку разработки Finanvita!</string>
     <string name="app_lock">Защита</string>

@@ -148,7 +148,7 @@
     <string name="l_backup_delete">Are you sure you want to delete backup?</string>
     <string name="l_auto_search_categories_on">Search will start automatically</string>
     <string name="l_auto_search_categories_off">Search will NOT start automatically</string>
-    <string name="l_donate_greet">Hi, I\'m Mantas Varnagiris, developer of Finanvita</string>
+    <string name="l_donate_greet">Hi, I\'m Nguyen Kim Kha, developer of Finanvita</string>
     <string name="l_donate_thank">Thank you for using my app. I hope it will help to save you some money. Please consider helping me save some money too :)</string>
     <string name="l_donate_thank_donate">Thank you for supporting the development of Finanvita!</string>
 

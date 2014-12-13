@@ -130,7 +130,7 @@
     <string name="l_backup_delete">Ar esate tikri, kad norite ištrinti atsarginę kopiją?</string>
     <string name="l_auto_search_categories_on">Paieška pasileis automatiškai</string>
     <string name="l_auto_search_categories_off">Paieška nepasileis automatiškai</string>
-    <string name="l_donate_greet">Sveiki, aš esu Mantas Varnagiris, Finanvita kūrėjas.</string>
+    <string name="l_donate_greet">Sveiki, aš esu Nguyen Kim Kha, Finanvita kūrėjas.</string>
     <string name="l_donate_thank">Ačiū, kad naudojatės mano aplikacija. Tikiuosi, kad ji padės jums sutaupyti pinigų. Būsiu labai dėkingas, jeigu padėsite man irgi sutaupyti pinigų.</string>
     <string name="l_donate_thank_donate">Ačiū, kad palaikote Finanvita kūrimą!</string>
     <string name="app_lock">Užraktas</string>

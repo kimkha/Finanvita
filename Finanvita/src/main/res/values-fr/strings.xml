@@ -130,7 +130,7 @@
     <string name="l_backup_delete">Etes-vous sûr de vouloir supprimer la sauvegarde?</string>
     <string name="l_auto_search_categories_on">Recherche démarre automatiquement</string>
     <string name="l_auto_search_categories_off">Recherche ne démarre pas automatiquement</string>
-    <string name="l_donate_greet">Salut, je suis Mantas Varnagiris, développeur de Finanvita</string>
+    <string name="l_donate_greet">Salut, je suis Nguyen Kim Kha, développeur de Finanvita</string>
     <string name="l_donate_thank">Merci d\'utiliser mon application. J\'espère que cela aidera à vous faire économiser de l\'argent.</string>
     <string name="l_donate_thank_donate">Nous vous remercions de soutenir le développement de Finanvita!</string>
     <string name="app_lock">Protection de l\'application</string>

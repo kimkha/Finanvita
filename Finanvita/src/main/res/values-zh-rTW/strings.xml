@@ -130,7 +130,7 @@
     <string name="l_backup_delete">您確定要刪除備份的資料嗎？</string>
     <string name="l_auto_search_categories_on">搜尋將自動啟動</string>
     <string name="l_auto_search_categories_off">搜尋將不會自動啟動</string>
-    <string name="l_donate_greet">您好，我是Mantas Varnagiris，Finanvita的開發者</string>
+    <string name="l_donate_greet">您好，我是Nguyen Kim Kha，Finanvita的開發者</string>
     <string name="l_donate_thank">感謝您使用我的應用程式，我希望這將有助於您節省一些金錢。請你也考慮幫助我省點錢:)</string>
     <string name="l_donate_thank_donate">感謝您支持Finanvita的開發工作！</string>
     <string name="app_lock">程式鎖</string>

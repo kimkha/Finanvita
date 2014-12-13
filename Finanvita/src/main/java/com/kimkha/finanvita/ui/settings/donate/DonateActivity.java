@@ -34,7 +34,7 @@ public class DonateActivity extends BaseActivity implements IabHelper.QueryInven
 {
     public static final String SKU_DONATE_1 = "kimkha.finanvita.test.1";
     public static final String SKU_DONATE_2 = "kimkha.finanvita.test.2";
-    public static final String SKU_DONATE_3 = "donate_3";
+    public static final String SKU_DONATE_3 = "android.test.purchased";
     public static final String SKU_DONATE_4 = "donate_4";
     public static final String SKU_DONATE_5 = "donate_5";
     // ---------------------------------------------------------------------------------------------

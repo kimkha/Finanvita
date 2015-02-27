@@ -12,9 +12,11 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
 import com.kimkha.finanvita.R;
 import com.kimkha.finanvita.utils.ExchangeRatesHelper;
 import com.kimkha.finanvita.utils.LayoutType;
+
 import de.greenrobot.event.EventBus;
 
 public class MainActivity extends BaseActivity implements NavigationFragment.Callbacks

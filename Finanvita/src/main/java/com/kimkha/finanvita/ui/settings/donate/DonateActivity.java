@@ -13,6 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.kimkha.finanvita.BuildConfig;
 import com.kimkha.finanvita.R;
 import com.kimkha.finanvita.billing.IabHelper;
@@ -23,7 +25,6 @@ import com.kimkha.finanvita.billing.SkuDetails;
 import com.kimkha.finanvita.ui.BaseActivity;
 import com.kimkha.finanvita.utils.PrefsHelper;
 import com.kimkha.finanvita.utils.SecurityHelper;
-import com.kimkha.finanvita.utils.Tracking;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -237,7 +238,7 @@ public class DonateActivity extends BaseActivity implements IabHelper.QueryInven
         updateUI();
 
         billingHelper.consumeAsync(purchase, this);
-        Tracking.onPurchaseCompleted(this, purchase, product);
+        trackingPurchase(purchase, product);
 
         new AlertDialog.Builder(this).setMessage(R.string.l_donate_thank_donate).setNeutralButton(R.string.ok, null).create().show();
     }
@@ -313,6 +314,42 @@ public class DonateActivity extends BaseActivity implements IabHelper.QueryInven
                 container_V.addView(view);
             }
         }
+    }
+
+    private void trackingPurchase(Purchase purchase, Product product)
+    {
+        String productName = "Donate";
+        double totalRevenue = product.getPriceAmount();
+        productName += totalRevenue;
+
+        // Build the transaction.
+        sendDataToTwoTrackers(new HitBuilders.TransactionBuilder()
+                .setTransactionId(purchase.getOrderId())
+                .setAffiliation("In-app Product")
+                .setRevenue(product.getPriceAmount())
+                .setTax(0)
+                .setShipping(0)
+                .setCurrencyCode(product.getCurrency())
+                .build());
+
+        // Build an item.
+        sendDataToTwoTrackers(new HitBuilders.ItemBuilder()
+                .setTransactionId(purchase.getOrderId())
+                .setName(productName)
+                .setSku(product.getSku())
+                .setCategory("Donate")
+                .setPrice(product.getPriceAmount())
+                .setQuantity(1)
+                .setCurrencyCode(product.getCurrency())
+                .build());
+    }
+
+    private void sendDataToTwoTrackers(Map<String, String> params) {
+        //AnalyticsSampleApp app = ((AnalyticsSampleApp) getActivity().getApplication());
+        Tracker appTracker = getTracker(TrackerName.APP_TRACKER);
+        Tracker ecommerceTracker = getTracker(TrackerName.ECOMMERCE_TRACKER);
+        appTracker.send(params);
+        ecommerceTracker.send(params);
     }
 
     public static class Product

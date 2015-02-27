@@ -147,7 +147,7 @@ public class YourDataActivity extends BaseActivity implements GoogleApiClient.Co
         connectClient();
     }
 
-    public void onNewContents(DriveApi.ContentsResult result)
+    public void onNewContents(DriveApi.DriveContentsResult result)
     {
         if (!result.getStatus().isSuccess())
         {
@@ -160,7 +160,7 @@ public class YourDataActivity extends BaseActivity implements GoogleApiClient.Co
                 .setMimeType("application/json")
                 .setStarred(false).build();
 
-        Drive.DriveApi.getRootFolder(client).createFile(client, changeSet, result.getContents()).setResultCallback(new ResultCallback<DriveFolder.DriveFileResult>() {
+        Drive.DriveApi.getRootFolder(client).createFile(client, changeSet, result.getDriveContents()).setResultCallback(new ResultCallback<DriveFolder.DriveFileResult>() {
             @Override
             public void onResult(DriveFolder.DriveFileResult driveFileResult) {
                 onCreateFile(driveFileResult);
@@ -219,9 +219,9 @@ public class YourDataActivity extends BaseActivity implements GoogleApiClient.Co
     {
         if (doBackup)
         {
-            Drive.DriveApi.newContents(client).setResultCallback(new ResultCallback<DriveApi.ContentsResult>() {
+            Drive.DriveApi.newDriveContents(client).setResultCallback(new ResultCallback<DriveApi.DriveContentsResult>() {
                 @Override
-                public void onResult(DriveApi.ContentsResult contentsResult) {
+                public void onResult(DriveApi.DriveContentsResult contentsResult) {
                     onNewContents(contentsResult);
                 }
             });
@@ -259,14 +259,14 @@ public class YourDataActivity extends BaseActivity implements GoogleApiClient.Co
             DriveFile file = args[0];
             try
             {
-                DriveApi.ContentsResult contentsResult = file.openContents(client, DriveFile.MODE_WRITE_ONLY, null).await();
+                DriveApi.DriveContentsResult contentsResult = file.open(client, DriveFile.MODE_WRITE_ONLY, null).await();
                 if (!contentsResult.getStatus().isSuccess())
                 {
                     return false;
                 }
-                OutputStream outputStream = contentsResult.getContents().getOutputStream();
+                OutputStream outputStream = contentsResult.getDriveContents().getOutputStream();
                 outputStream.write(BackupUtils.generateBackupJson().toString().getBytes());
-                com.google.android.gms.common.api.Status status = file.commitAndCloseContents(client, contentsResult.getContents()).await();
+                com.google.android.gms.common.api.Status status = contentsResult.getDriveContents().commit(client, null).await();
                 return status.getStatus().isSuccess();
             }
             catch (IOException e)
@@ -303,12 +303,12 @@ public class YourDataActivity extends BaseActivity implements GoogleApiClient.Co
             String contents;
             DriveFile file = Drive.DriveApi.getFile(client, params[0]);
 
-            DriveApi.ContentsResult contentsResult = file.openContents(client, DriveFile.MODE_READ_ONLY, null).await();
+            DriveApi.DriveContentsResult contentsResult = file.open(client, DriveFile.MODE_READ_ONLY, null).await();
             if (!contentsResult.getStatus().isSuccess())
             {
                 return null;
             }
-            BufferedReader reader = new BufferedReader(new InputStreamReader(contentsResult.getContents().getInputStream()));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(contentsResult.getDriveContents().getInputStream()));
             StringBuilder builder = new StringBuilder();
             String line;
             try
@@ -324,7 +324,7 @@ public class YourDataActivity extends BaseActivity implements GoogleApiClient.Co
                 return e;
             }
 
-            file.discardContents(client, contentsResult.getContents()).await();
+            contentsResult.getDriveContents().discard(client);
 
             try
             {

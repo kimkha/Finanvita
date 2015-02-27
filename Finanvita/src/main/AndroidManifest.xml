@@ -2,10 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kimkha.finanvita">
 
-    <uses-sdk
-        android:minSdkVersion="14"
-        android:targetSdkVersion="18" />
-
     <!-- Permissions -->
     <!-- ======================================================================================================== -->
     <uses-permission android:name="android.permission.INTERNET" />

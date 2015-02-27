@@ -14,11 +14,15 @@ import android.text.style.TypefaceSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.Tracker;
 import com.kimkha.finanvita.R;
 import com.kimkha.finanvita.ui.settings.SettingsActivity;
 import com.kimkha.finanvita.ui.settings.lock.LockActivity;
 import com.kimkha.finanvita.utils.SecurityHelper;
-import com.kimkha.finanvita.utils.Tracking;
+
+import java.util.HashMap;
 
 /**
  * Created by Mantas on 25/05/13.
@@ -64,13 +68,15 @@ public abstract class BaseActivity extends FragmentActivity
         // Restore state
         if (savedInstanceState != null)
             forceSecurity = savedInstanceState.getBoolean(STATE_FORCE_SECURITY, false);
+
+        getTracker(TrackerName.GLOBAL_TRACKER);
     }
 
     @Override
     protected void onStart()
     {
         super.onStart();
-        Tracking.startTracking(this);
+        GoogleAnalytics.getInstance(this).reportActivityStart(this);
     }
 
     @Override
@@ -95,7 +101,7 @@ public abstract class BaseActivity extends FragmentActivity
     protected void onStop()
     {
         super.onStop();
-        Tracking.stopTracking(this);
+        GoogleAnalytics.getInstance(this).reportActivityStop(this);
     }
 
     @Override
@@ -185,5 +191,40 @@ public abstract class BaseActivity extends FragmentActivity
         SpannableStringBuilder ssb = new SpannableStringBuilder(title);
         ssb.setSpan(new TypefaceSpan("sans-serif-light"), 0, title.length(), SpannableStringBuilder.SPAN_EXCLUSIVE_EXCLUSIVE);
         getActionBar().setTitle(ssb);
+    }
+
+
+    /**
+     * Enum used to identify the tracker that needs to be used for tracking.
+     *
+     * A single tracker is usually enough for most purposes. In case you do need multiple trackers,
+     * storing them all in Application object helps ensure that they are created only once per
+     * application instance.
+     */
+    public enum TrackerName {
+        APP_TRACKER, // Tracker used only in this app.
+        GLOBAL_TRACKER, // Tracker used by all the apps from a company. eg: roll-up tracking.
+        ECOMMERCE_TRACKER, // Tracker used by all ecommerce transactions from a company.
+    }
+
+    HashMap<TrackerName, Tracker> mTrackers = new HashMap<TrackerName, Tracker>();
+
+    private final String PROPERTY_ID = "UA-57722904-1";
+
+    protected synchronized Tracker getTracker(TrackerName trackerId) {
+        if (!mTrackers.containsKey(trackerId)) {
+
+            GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
+            Tracker t = (trackerId == TrackerName.APP_TRACKER) ? analytics.newTracker(PROPERTY_ID)
+                    : (trackerId == TrackerName.GLOBAL_TRACKER) ? analytics.newTracker(R.xml.global_tracker)
+                    : analytics.newTracker(R.xml.ecommerce_tracker);
+
+            // Enable Advertising Features.
+            t.enableAdvertisingIdCollection(true);
+
+            mTrackers.put(trackerId, t);
+
+        }
+        return mTrackers.get(trackerId);
     }
 }

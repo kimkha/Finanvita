@@ -1,8 +1,9 @@
 # Finanvita
 Android Expense Manager
+- [Download from Google Play Store](https://play.google.com/store/apps/details?id=com.kimkha.finanvita)
 
 # FAQ
-- **I have an amazing idea for this app, what should I do?** - First make sure that the same or similar idea is not already planned/done/rejected by checking everything [here](https://github.com/mvarnagiris/Finanvita/issues?state=open) and [here](https://github.com/mvarnagiris/Finanvita/issues?page=1&state=closed). If it is already in there, and you have something to add, feel free to write a comment under that issue. If your idea is unique, then [create a new issue](https://github.com/mvarnagiris/Finanvita/issues/new) describing it.
+- **I have an amazing idea for this app, what should I do?** - First make sure that the same or similar idea is not already planned/done/rejected by checking everything [here](https://github.com/kimkha/Finanvita/issues?state=open) and [here](https://github.com/kimkha/Finanvita/issues?page=1&state=closed). If it is already in there, and you have something to add, feel free to write a comment under that issue. If your idea is unique, then [create a new issue](https://github.com/kimkha/Finanvita/issues/new) describing it.
 - **I have found a bug, what should I do?** - Same rules apply as for *amazing idea* described above.
 - **Can I contribute?** - Of course. And you should definitely do it! Fork the *dev* branch and when you have something to give back, do a *Pull Request* into *dev* branch.
 - **How can I join beta channel?** - Easy, just join this [community] (https://plus.google.com/communities/105052097023793642366), then go [here](https://play.google.com/apps/testing/com.kimkha.finanvita) and follow instructions.

@@ -21,7 +21,7 @@ import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
  */
 public abstract class AbstractStickyCursorAdapter extends AbstractCursorAdapter implements StickyListHeadersAdapter
 {
-    private Map<Integer, Long> allItems;
+    private Map<Integer, Long> allItems = new HashMap<>();
 
     private DataSetObserver mDataSetObserver = new DataSetObserver()
     {
@@ -38,8 +38,6 @@ public abstract class AbstractStickyCursorAdapter extends AbstractCursorAdapter 
 
     public AbstractStickyCursorAdapter(Context context, Cursor c) {
         super(context, c);
-
-        this.allItems = new HashMap<Integer, Long>();
 
         if (c != null)
         {
@@ -121,10 +119,16 @@ public abstract class AbstractStickyCursorAdapter extends AbstractCursorAdapter 
     protected abstract void bindHeaderView(View view, Context context, Cursor c);
 
     private long getCursorPosition(int position) {
+        if (allItems == null) {
+            return 0;
+        }
         return allItems.get(position);
     }
 
     private void prepareIndexer(Cursor c) {
+        if (allItems == null) {
+            allItems = new HashMap<>();
+        }
         allItems.clear();
 
         if (c == null || !c.moveToFirst())

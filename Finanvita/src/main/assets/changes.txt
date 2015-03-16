@@ -1,2 +1,4 @@
-<b>v0.9.7</b><br>
-- Everything has changed :)
+<b>v0.1.1</b><br>
+- Fix bug crash on Android 4.4
+<b>v0.1</b><br>
+- Start new project Finanvita

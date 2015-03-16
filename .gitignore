@@ -17,3 +17,4 @@ release.keystore
 #Other
 .DS_Store
 Finanvita-release.apk
+manifest-merger-release-report.txt

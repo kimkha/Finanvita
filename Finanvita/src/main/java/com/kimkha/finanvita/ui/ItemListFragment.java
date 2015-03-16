@@ -199,7 +199,7 @@ public abstract class ItemListFragment extends BaseFragment implements AdapterVi
         switch (selectionType)
         {
             case SELECTION_TYPE_NONE:
-                if (position == adapterView.getCount() - 1)
+                if (position == adapter.getCount())
                     startItemCreate(getActivity(), view);
                 else
                     startItemDetails(getActivity(), id, position, adapter, adapter.getCursor(), view);

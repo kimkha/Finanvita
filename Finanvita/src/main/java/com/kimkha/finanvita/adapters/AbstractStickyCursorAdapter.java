@@ -119,7 +119,7 @@ public abstract class AbstractStickyCursorAdapter extends AbstractCursorAdapter 
     protected abstract void bindHeaderView(View view, Context context, Cursor c);
 
     private long getCursorPosition(int position) {
-        if (allItems == null) {
+        if (allItems == null || !allItems.containsKey(position)) {
             return 0;
         }
         return allItems.get(position);

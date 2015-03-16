@@ -207,7 +207,7 @@ public abstract class StickyListFragment extends BaseFragment implements Adapter
         switch (selectionType)
         {
             case SELECTION_TYPE_NONE:
-                if (position == adapterView.getCount())
+                if (position == adapter.getCount())
                     startItemCreate(getActivity(), view);
                 else
                     startItemDetails(getActivity(), id, position, adapter, adapter.getCursor(), view);

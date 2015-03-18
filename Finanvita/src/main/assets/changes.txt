@@ -1,4 +1,10 @@
+<b>v0.1.2</b><br>
+- Minor changes
+<br><br>
+
 <b>v0.1.1</b><br>
 - Fix bug crash on Android 4.4
+<br><br>
+
 <b>v0.1</b><br>
 - Start new project Finanvita

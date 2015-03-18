@@ -1,23 +1,18 @@
 import java.text.SimpleDateFormat
 
-buildscript {
-    repositories { mavenCentral() }
-    dependencies { classpath 'com.android.tools.build:gradle:1.0.+' }
-}
-
 apply plugin: 'com.android.application'
 
-repositories {
-    mavenCentral()
-    maven { url 'https://github.com/Goddchen/mvn-repo/raw/master/' }
-}
+//repositories {
+//    mavenCentral()
+    //maven { url 'https://github.com/Goddchen/mvn-repo/raw/master/' }
+//}
 
 android {
     compileSdkVersion 22
     buildToolsVersion "22"
 
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion 11
         targetSdkVersion 22
         versionCode 6
         versionName "0.1.2"
@@ -64,9 +59,9 @@ def getBuildName()
 }
 
 dependencies {
-    compile files(
-            'libs/bsh-core-2.0b4.jar',
-            'libs/joda-time-2.3.jar')
+    //compile files('libs/joda-time-2.3.jar')
+    compile 'org.beanshell:bsh-core:2.0b4'
+    compile 'joda-time:joda-time:2.3'
     compile 'com.google.android.gms:play-services:+'
     compile 'de.greenrobot:eventbus:2.2.0'
     compile 'se.emilsjolander:stickylistheaders:2.+'

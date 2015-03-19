@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.*;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.app.ActionBarActivity;
 import android.text.SpannableStringBuilder;
 import android.text.style.TypefaceSpan;
 import android.view.Menu;
@@ -25,9 +26,11 @@ import com.kimkha.finanvita.utils.SecurityHelper;
 import java.util.HashMap;
 
 /**
- * Created by Mantas on 25/05/13.
+ * Base activity for Finanvita
+ * @author kimkha
+ * @since 0.1
  */
-public abstract class BaseActivity extends FragmentActivity
+public abstract class BaseActivity extends ActionBarActivity
 {
     protected static final String STATE_FORCE_SECURITY = BaseActivity.class.getName() + ".STATE_FORCE_SECURITY";
     protected final BroadcastReceiver killReceiver = new BroadcastReceiver()
@@ -63,7 +66,7 @@ public abstract class BaseActivity extends FragmentActivity
 
         // Setup ActionBar
         //noinspection ConstantConditions
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Restore state
         if (savedInstanceState != null)
@@ -190,7 +193,7 @@ public abstract class BaseActivity extends FragmentActivity
     {
         SpannableStringBuilder ssb = new SpannableStringBuilder(title);
         ssb.setSpan(new TypefaceSpan("sans-serif-light"), 0, title.length(), SpannableStringBuilder.SPAN_EXCLUSIVE_EXCLUSIVE);
-        getActionBar().setTitle(ssb);
+        getSupportActionBar().setTitle(ssb);
     }
 
 

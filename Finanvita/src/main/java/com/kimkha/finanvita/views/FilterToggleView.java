@@ -1,9 +1,11 @@
 package com.kimkha.finanvita.views;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageButton;
@@ -27,12 +29,18 @@ public class FilterToggleView extends LinearLayout
 
     public FilterToggleView(Context context, AttributeSet attrs)
     {
-        this(context, attrs, 0);
+        super(context, attrs);
+        initAll(context);
     }
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public FilterToggleView(Context context, AttributeSet attrs, int defStyle)
     {
         super(context, attrs, defStyle);
+        initAll(context);
+    }
+
+    private void initAll(Context context) {
         inflate(context, R.layout.v_filter_toggle, this);
 
         // Get views

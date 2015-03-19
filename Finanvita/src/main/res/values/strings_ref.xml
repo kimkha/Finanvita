@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Finanvita</string>
+    <string name="app_name" translatable="false">Finanvita</string>
 
     <!-- Account types -->
     <string name="ac_other">Other</string>
-    <string-array name="account_types">
+    <string-array name="account_types" translatable="false">
         <item>ac_other</item>
     </string-array>
 
     <!-- Automatic updates choices -->
-    <string-array name="automatic_updates">
+    <string-array name="automatic_updates" translatable="false">
         <item>@string/over_wifi_or_mobile_network</item>
         <item>@string/over_wifi_only</item>
         <item>@string/never</item>
     </string-array>
-    <string-array name="automatic_updates_values">
+    <string-array name="automatic_updates_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
@@ -27,7 +27,7 @@
         <item>@string/month</item>
         <item>@string/year</item>
     </string-array>
-    <string-array name="periods_values">
+    <string-array name="periods_values" translatable="false">
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -36,23 +36,23 @@
 
     <!-- Calc -->
     <!-- ======================================================================================================== -->
-    <string name="calc_0">0</string>
-    <string name="calc_1">1</string>
-    <string name="calc_2">2</string>
-    <string name="calc_3">3</string>
-    <string name="calc_4">4</string>
-    <string name="calc_5">5</string>
-    <string name="calc_6">6</string>
-    <string name="calc_7">7</string>
-    <string name="calc_8">8</string>
-    <string name="calc_9">9</string>
-    <string name="calc_div">÷</string>
-    <string name="calc_mul">×</string>
-    <string name="calc_sub">-</string>
-    <string name="calc_add">+</string>
-    <string name="calc_decimal">.</string>
-    <string name="calc_equals">=</string>
-    <string name="calc_done">✓</string>
+    <string name="calc_0" translatable="false">0</string>
+    <string name="calc_1" translatable="false">1</string>
+    <string name="calc_2" translatable="false">2</string>
+    <string name="calc_3" translatable="false">3</string>
+    <string name="calc_4" translatable="false">4</string>
+    <string name="calc_5" translatable="false">5</string>
+    <string name="calc_6" translatable="false">6</string>
+    <string name="calc_7" translatable="false">7</string>
+    <string name="calc_8" translatable="false">8</string>
+    <string name="calc_9" translatable="false">9</string>
+    <string name="calc_div" translatable="false">÷</string>
+    <string name="calc_mul" translatable="false">×</string>
+    <string name="calc_sub" translatable="false">-</string>
+    <string name="calc_add" translatable="false">+</string>
+    <string name="calc_decimal" translatable="false">.</string>
+    <string name="calc_equals" translatable="false">=</string>
+    <string name="calc_done" translatable="false">✓</string>
 
     <!-- Colors -->
     <!-- ======================================================================================================== -->

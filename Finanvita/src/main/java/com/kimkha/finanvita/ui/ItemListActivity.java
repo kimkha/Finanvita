@@ -1,12 +1,12 @@
 package com.kimkha.finanvita.ui;
 
-import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -91,7 +91,7 @@ public abstract class ItemListActivity extends BaseActivity
                 break;
 
             case ItemListFragment.SELECTION_TYPE_MULTI:
-                final ActionBar actionBar = getActionBar();
+                final ActionBar actionBar = getSupportActionBar();
                 final LayoutInflater inflater = (LayoutInflater) actionBar.getThemedContext().getSystemService(LAYOUT_INFLATER_SERVICE);
                 final View buttons_V = inflater.inflate(R.layout.v_actionbar_done_discard, null);
                 final TextView discardTitle_TV = (TextView) buttons_V.findViewById(R.id.discardTitle_TV);
@@ -120,7 +120,7 @@ public abstract class ItemListActivity extends BaseActivity
                     }
                 });
                 actionBar.setCustomView(buttons_V, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-                getActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM,
+                getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM,
                         ActionBar.DISPLAY_SHOW_CUSTOM | ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_SHOW_TITLE);
                 break;
         }

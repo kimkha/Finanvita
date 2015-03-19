@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.SwitchCompat;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -73,7 +74,7 @@ public class DonateActivity extends BaseActivity implements IabHelper.QueryInven
         container_V = (LinearLayout) findViewById(R.id.container_V);
         final View separator_V = findViewById(R.id.separator_V);
         final View donateSwitchContainer_V = findViewById(R.id.donateSwitchContainer_V);
-        final Switch switch_S = (Switch) findViewById(R.id.switch_S);
+        final SwitchCompat switch_S = (SwitchCompat) findViewById(R.id.switch_S);
 
         // Setup
         setActionBarTitle(R.string.donate);

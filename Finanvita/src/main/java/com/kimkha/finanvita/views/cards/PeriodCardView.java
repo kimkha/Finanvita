@@ -1,6 +1,7 @@
 package com.kimkha.finanvita.views.cards;
 
 import android.content.Context;
+import android.os.Build;
 import android.util.AttributeSet;
 import com.kimkha.finanvita.utils.PeriodHelper;
 
@@ -22,7 +23,9 @@ public class PeriodCardView extends TitleCardView
         super(context, attrs, defStyle);
 
         // Setup
-        getSecondaryTitleView().setAllCaps(true);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            getSecondaryTitleView().setAllCaps(true);
+        }
     }
 
     @Override

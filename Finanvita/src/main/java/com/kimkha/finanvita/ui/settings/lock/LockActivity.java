@@ -1,11 +1,11 @@
 package com.kimkha.finanvita.ui.settings.lock;
 
-import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +16,7 @@ import com.kimkha.finanvita.ui.settings.lock.LockFragment.LockFragmentListener;
 import com.kimkha.finanvita.ui.settings.lock.LockFragment.LockFragmentUnlockListener;
 import com.kimkha.finanvita.utils.SecurityHelper;
 
-public class LockActivity extends FragmentActivity implements LockFragmentListener, LockFragmentUnlockListener
+public class LockActivity extends ActionBarActivity implements LockFragmentListener, LockFragmentUnlockListener
 {
     public static final String ACTION_KILL = LockActivity.class.getName() + ".ACTION_KILL";
     // --------------------------------------------------------------------------------------------------------------------------------
@@ -98,7 +98,7 @@ public class LockActivity extends FragmentActivity implements LockFragmentListen
     public void onLockCreated(String code)
     {
         currentCode = code;
-        getActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM,
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM,
                 ActionBar.DISPLAY_SHOW_CUSTOM | ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_SHOW_TITLE);
     }
 
@@ -130,7 +130,7 @@ public class LockActivity extends FragmentActivity implements LockFragmentListen
         if (mode == SecurityHelper.MODE_NEW)
         {
             // Inflate a "Done/Discard" custom action bar view.
-            final LayoutInflater inflater = (LayoutInflater) getActionBar().getThemedContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+            final LayoutInflater inflater = (LayoutInflater) getSupportActionBar().getThemedContext().getSystemService(LAYOUT_INFLATER_SERVICE);
             final View customActionBarView = inflater.inflate(R.layout.v_actionbar_done_discard, null);
             customActionBarView.findViewById(R.id.action_done).setOnClickListener(new View.OnClickListener()
             {
@@ -150,11 +150,11 @@ public class LockActivity extends FragmentActivity implements LockFragmentListen
             });
 
             // Show the custom action bar view and hide the normal Home icon and title.
-            final ActionBar actionBar = getActionBar();
+            final ActionBar actionBar = getSupportActionBar();
             actionBar.setCustomView(customActionBarView, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         } else
         {
-            getActionBar().hide();
+            getSupportActionBar().hide();
         }
     }
 

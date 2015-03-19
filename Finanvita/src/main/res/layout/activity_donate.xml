@@ -82,7 +82,7 @@
             android:text="@string/show_donate_in_navigation"
             android:fontFamily="sans-serif-light" />
 
-        <Switch
+        <android.support.v7.widget.SwitchCompat
             android:id="@+id/switch_S"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

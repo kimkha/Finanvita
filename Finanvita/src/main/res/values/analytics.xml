@@ -5,7 +5,7 @@
     <integer name="ga_sessionTimeout">300</integer>
 
     <!--Replace placeholder ID with your tracking ID-->
-    <string name="ga_trackingId">UA-57722904-1</string>
+    <string name="ga_trackingId" translatable="false">UA-57722904-1</string>
 
     <!--Enable automatic activity tracking-->
     <bool name="ga_autoActivityTracking">true</bool>

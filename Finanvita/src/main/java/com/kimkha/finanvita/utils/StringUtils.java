@@ -27,6 +27,7 @@ public class StringUtils
         }
         catch (java.security.NoSuchAlgorithmException e)
         {
+            e.printStackTrace();
         }
         return null;
     }

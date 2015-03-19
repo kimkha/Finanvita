@@ -3,10 +3,12 @@ package com.kimkha.finanvita.ui;
 import android.animation.LayoutTransition;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.support.v4.view.MenuItemCompat;
 import android.view.*;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -72,7 +74,10 @@ public class OverviewFragment extends BaseFragment implements MainActivity.Navig
         adapter = new OverviewCardsAdapter(getActivity());
         list_V.setAdapter(adapter);
         list_V.setOnItemClickListener(this);
-        list_V.setLayoutTransition(new LayoutTransition());
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            list_V.setLayoutTransition(new LayoutTransition());
+        }
     }
 
     @Override
@@ -108,7 +113,7 @@ public class OverviewFragment extends BaseFragment implements MainActivity.Navig
         switch (item.getItemId())
         {
             case R.id.action_create:
-                TransactionEditActivity.startItemEdit(getActivity(), 0, item.getActionView());
+                TransactionEditActivity.startItemEdit(getActivity(), 0, MenuItemCompat.getActionView(item));
                 break;
         }
         return super.onOptionsItemSelected(item);

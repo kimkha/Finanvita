@@ -53,8 +53,12 @@ public class FilterToggleView extends LinearLayout
         //noinspection ConstantConditions
         foregroundSelector = res.getDrawable(R.drawable.btn_borderless);
         setOrientation(HORIZONTAL);
-        setShowDividers(SHOW_DIVIDER_MIDDLE);
-        setDividerPadding(res.getDimensionPixelSize(R.dimen.divider_padding));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            setShowDividers(SHOW_DIVIDER_MIDDLE);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+                setDividerPadding(res.getDimensionPixelSize(R.dimen.divider_padding));
+            }
+        }
         clear_B.setOnClickListener(new OnClickListener()
         {
             @Override

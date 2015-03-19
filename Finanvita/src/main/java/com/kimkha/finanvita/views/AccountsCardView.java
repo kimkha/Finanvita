@@ -1,6 +1,8 @@
 package com.kimkha.finanvita.views;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -14,11 +16,11 @@ import java.util.List;
 
 public class AccountsCardView extends LinearLayout
 {
-    private final TextView balance_TV;
-    private final View separator_V;
-    private final View balanceContainer_V;
-    private final TextView createAccount_TV;
-    private final LinearLayout container_V;
+    private TextView balance_TV;
+    private View separator_V;
+    private View balanceContainer_V;
+    private TextView createAccount_TV;
+    private LinearLayout container_V;
     private boolean hasAccounts = false;
 
     public AccountsCardView(Context context)
@@ -28,12 +30,18 @@ public class AccountsCardView extends LinearLayout
 
     public AccountsCardView(Context context, AttributeSet attrs)
     {
-        this(context, attrs, 0);
+        super(context, attrs);
+        initAll(context);
     }
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public AccountsCardView(Context context, AttributeSet attrs, int defStyle)
     {
         super(context, attrs, defStyle);
+        initAll(context);
+    }
+
+    private void initAll(Context context) {
         inflate(context, R.layout.v_accounts_card, this);
 
         // Setup layout

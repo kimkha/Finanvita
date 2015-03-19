@@ -191,9 +191,13 @@ public abstract class BaseActivity extends ActionBarActivity
 
     protected void setActionBarTitle(String title)
     {
-        SpannableStringBuilder ssb = new SpannableStringBuilder(title);
-        ssb.setSpan(new TypefaceSpan("sans-serif-light"), 0, title.length(), SpannableStringBuilder.SPAN_EXCLUSIVE_EXCLUSIVE);
-        getSupportActionBar().setTitle(ssb);
+        if (title == null) {
+            getSupportActionBar().setTitle(null);
+        } else {
+            SpannableStringBuilder ssb = new SpannableStringBuilder(title);
+            ssb.setSpan(new TypefaceSpan("sans-serif-light"), 0, title.length(), SpannableStringBuilder.SPAN_EXCLUSIVE_EXCLUSIVE);
+            getSupportActionBar().setTitle(ssb);
+        }
     }
 
 

@@ -36,7 +36,7 @@
             class="com.kimkha.finanvita.ui.FilterFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:layout="@layout/fragment_notifications" />
+            tools:layout="@layout/fragment_filter" />
     </FrameLayout>
 
 </android.support.v4.widget.DrawerLayout>

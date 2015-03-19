@@ -42,6 +42,7 @@ public class AboutActivity extends BaseActivity
         }
         catch (NameNotFoundException e)
         {
+            e.printStackTrace();
         }
 
         try

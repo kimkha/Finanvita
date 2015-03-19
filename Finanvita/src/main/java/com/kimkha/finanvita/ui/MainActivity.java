@@ -88,7 +88,7 @@ public class MainActivity extends BaseActivity implements NavigationFragment.Cal
                             setActionBarTitle(content_F.getTitle());
                         else
                             //noinspection ConstantConditions
-                            getActionBar().setTitle(null);
+                            setActionBarTitle(null);
                     }
                 }
 

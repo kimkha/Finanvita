@@ -1,6 +1,8 @@
 package com.kimkha.finanvita.views;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -9,8 +11,8 @@ import com.kimkha.finanvita.utils.AmountUtils;
 
 public class AccountView extends LinearLayout
 {
-    private final TextView title_TV;
-    private final TextView balance_TV;
+    private TextView title_TV;
+    private TextView balance_TV;
 
     public AccountView(Context context)
     {
@@ -19,12 +21,18 @@ public class AccountView extends LinearLayout
 
     public AccountView(Context context, AttributeSet attrs)
     {
-        this(context, attrs, 0);
+        super(context, attrs);
+        initAll(context);
     }
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public AccountView(Context context, AttributeSet attrs, int defStyle)
     {
         super(context, attrs, defStyle);
+        initAll(context);
+    }
+
+    private void initAll(Context context) {
         inflate(context, R.layout.v_account, this);
 
         // Get views

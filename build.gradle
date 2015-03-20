@@ -15,6 +15,6 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
-        maven { url 'https://github.com/Goddchen/mvn-repo/raw/master/' }
+        maven { url 'https://raw.githubusercontent.com/Goddchen/mvn-repo/master/' }
     }
 }

@@ -1,10 +1,27 @@
+<b>v0.2</b><br>
+- Languages chooser
+<br><br><br>
+
 <b>v0.1.2</b><br>
 - Minor changes
-<br><br>
+<br><br><br>
 
 <b>v0.1.1</b><br>
 - Fix bug crash on Android 4.4
-<br><br>
+<br><br><br>
 
 <b>v0.1</b><br>
-- Start new project Finanvita
+Start new project Finanvita
+<br><br>
+- Most relevant information at a glance
+- Manage multiple accounts with separate balances
+- Multiple currencies
+- Add expense, income, and transfers between accounts
+- Some categories have been created for you, but you can always create more
+- Rearrange categories by long pressing and dragging
+- Change periods for reports
+- See where your money goes with categories report.
+- Google Drive backup
+- DashClock extension
+- Holo style
+- No ads

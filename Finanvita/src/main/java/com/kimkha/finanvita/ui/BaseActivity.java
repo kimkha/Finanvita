@@ -209,9 +209,12 @@ public abstract class BaseActivity extends FragmentActivity
 
     HashMap<TrackerName, Tracker> mTrackers = new HashMap<TrackerName, Tracker>();
 
-    private final String PROPERTY_ID = "UA-57722904-1";
+    private String PROPERTY_ID = null;
 
     protected synchronized Tracker getTracker(TrackerName trackerId) {
+        if (PROPERTY_ID == null) {
+            PROPERTY_ID = getString(R.string.ga_trackingId);
+        }
         if (!mTrackers.containsKey(trackerId)) {
 
             GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);

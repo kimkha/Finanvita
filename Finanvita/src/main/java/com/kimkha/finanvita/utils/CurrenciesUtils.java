@@ -1,12 +1,11 @@
 package com.kimkha.finanvita.utils;
 
 import android.content.ContentValues;
+
 import com.kimkha.finanvita.db.Tables;
 
-public class CurrenciesUtils
-{
-    public static ContentValues getValues(String code, String symbol, int decimals, String groupSeparator, String decimalSeparator, boolean isDefault, String symbolFormat, double exchangeRate)
-    {
+public class CurrenciesUtils {
+    public static ContentValues getValues(String code, String symbol, int decimals, String groupSeparator, String decimalSeparator, boolean isDefault, String symbolFormat, double exchangeRate) {
         ContentValues values = new ContentValues();
 
         values.put(Tables.Currencies.SERVER_ID, code);

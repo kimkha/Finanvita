@@ -2,14 +2,13 @@ package com.kimkha.finanvita.utils;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+
 import com.kimkha.finanvita.App;
 import com.kimkha.finanvita.db.DBHelper;
 import com.kimkha.finanvita.db.Tables;
 
-public class CategoriesUtils
-{
-    public static ContentValues getValues(long parentId, String title, int level, int type, int color)
-    {
+public class CategoriesUtils {
+    public static ContentValues getValues(long parentId, String title, int level, int type, int color) {
         ContentValues values = new ContentValues();
 
         values.put(Tables.Categories.PARENT_ID, parentId);
@@ -21,11 +20,9 @@ public class CategoriesUtils
         return values;
     }
 
-    public static class OrderValuesUpdater implements DataHelper.ValuesUpdater
-    {
+    public static class OrderValuesUpdater implements DataHelper.ValuesUpdater {
         @Override
-        public void updateValues(ContentValues values)
-        {
+        public void updateValues(ContentValues values) {
             // Get values
             //noinspection ConstantConditions
             final long itemId = values.containsKey(Tables.Categories.ID) ? values.getAsLong(Tables.Categories.ID) : 0;
@@ -39,48 +36,36 @@ public class CategoriesUtils
             int parentOrder = 0;
             Cursor c = null;
 
-            if (itemId == 0)
-            {
+            if (itemId == 0) {
                 // Creating new item
-                try
-                {
+                try {
                     //noinspection ConstantConditions
                     c = DBHelper.get(App.getAppContext()).getReadableDatabase().query(Tables.Categories.TABLE_NAME, new String[]{Tables.Categories.T_ID}, level == 1 ? Tables.Categories.LEVEL + "=?" : Tables.Categories.PARENT_ID + "=?", level == 1 ? new String[]{"1"} : new String[]{String.valueOf(parentId)}, null, null, null);
                     if (c != null && c.moveToFirst())
                         order = c.getCount();
-                }
-                finally
-                {
+                } finally {
                     if (c != null && !c.isClosed())
                         c.close();
                 }
-            }
-            else
-            {
+            } else {
                 // Updating item
-                try
-                {
+                try {
                     //noinspection ConstantConditions
                     c = DBHelper.get(App.getAppContext()).getReadableDatabase().query(Tables.Categories.TABLE_NAME, new String[]{Tables.Categories.ORDER}, Tables.Categories.T_ID + "=?", new String[]{String.valueOf(itemId)}, null, null, null);
                     if (c != null && c.moveToFirst())
                         order = c.getInt(0);
-                }
-                finally
-                {
+                } finally {
                     if (c != null && !c.isClosed())
                         c.close();
                 }
             }
 
-            try
-            {
+            try {
                 //noinspection ConstantConditions
                 c = DBHelper.get(App.getAppContext()).getReadableDatabase().query(Tables.Categories.TABLE_NAME, new String[]{Tables.Categories.ORDER}, Tables.Categories.T_ID + "=?", new String[]{String.valueOf(parentId)}, null, null, null);
                 if (c != null && c.moveToFirst())
                     parentOrder = c.getInt(0);
-            }
-            finally
-            {
+            } finally {
                 if (c != null && !c.isClosed())
                     c.close();
             }

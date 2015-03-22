@@ -1,12 +1,11 @@
 package com.kimkha.finanvita.utils;
 
 import android.content.ContentValues;
+
 import com.kimkha.finanvita.db.Tables;
 
-public class TransactionsUtils
-{
-    public static ContentValues getValues(long accountFromId, long accountToId, long categoryId, long date, double amount, double exchangeRate, String note, int state, boolean showInTotals)
-    {
+public class TransactionsUtils {
+    public static ContentValues getValues(long accountFromId, long accountToId, long categoryId, long date, double amount, double exchangeRate, String note, int state, boolean showInTotals) {
         ContentValues values = new ContentValues();
 
         values.put(Tables.Transactions.ACCOUNT_FROM_ID, accountFromId);

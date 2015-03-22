@@ -2,10 +2,10 @@ package com.kimkha.finanvita.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+
 import de.greenrobot.event.EventBus;
 
-public class FilterHelper
-{
+public class FilterHelper {
     private static final String PREFIX = "filter_helper_";
     // -----------------------------------------------------------------------------------------------------------------
     private static FilterHelper instance;
@@ -14,8 +14,7 @@ public class FilterHelper
     private long periodStart;
     private long periodEnd;
 
-    private FilterHelper(Context context)
-    {
+    private FilterHelper(Context context) {
         this.context = context.getApplicationContext();
 
         final SharedPreferences prefs = PrefsHelper.getPrefs(context);
@@ -23,51 +22,43 @@ public class FilterHelper
         periodEnd = prefs.getLong(PREFIX + "periodEnd", 0);
     }
 
-    public static FilterHelper getDefault(Context context)
-    {
+    public static FilterHelper getDefault(Context context) {
         if (instance == null)
             instance = new FilterHelper(context);
         return instance;
     }
 
-    public long getPeriodStart()
-    {
+    public long getPeriodStart() {
         return periodStart;
     }
 
-    public void setPeriodStart(long periodStart)
-    {
+    public void setPeriodStart(long periodStart) {
         this.periodStart = periodStart;
         PrefsHelper.getPrefs(context).edit().putLong(PREFIX + "periodStart", periodStart).apply();
         EventBus.getDefault().post(new FilterChangedEvent());
     }
 
-    public long getPeriodEnd()
-    {
+    public long getPeriodEnd() {
         return periodEnd;
     }
 
-    public void setPeriodEnd(long periodEnd)
-    {
+    public void setPeriodEnd(long periodEnd) {
         this.periodEnd = periodEnd;
         PrefsHelper.getPrefs(context).edit().putLong(PREFIX + "periodEnd", periodEnd).apply();
         EventBus.getDefault().post(new FilterChangedEvent());
     }
 
-    public boolean isPeriodSet()
-    {
+    public boolean isPeriodSet() {
         return periodStart > 0 || periodEnd > 0;
     }
 
-    public void clearPeriod()
-    {
+    public void clearPeriod() {
         periodStart = 0;
         periodEnd = 0;
         EventBus.getDefault().post(new FilterChangedEvent());
     }
 
-    public void clearAll()
-    {
+    public void clearAll() {
         // clearPeriod
         periodStart = 0;
         periodEnd = 0;
@@ -75,7 +66,6 @@ public class FilterHelper
         EventBus.getDefault().post(new FilterChangedEvent());
     }
 
-    public static class FilterChangedEvent
-    {
+    public static class FilterChangedEvent {
     }
 }

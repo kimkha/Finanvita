@@ -11,12 +11,10 @@ import com.kimkha.finanvita.parsers.JTags;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-public class BackupUtils
-{
+public class BackupUtils {
     public static final int BACKUP_VERSION = 5;
 
-    public static JsonObject generateBackupJson()
-    {
+    public static JsonObject generateBackupJson() {
         final Context context = App.getAppContext();
         final JsonObject json = new JsonObject();
 
@@ -41,15 +39,12 @@ public class BackupUtils
         return json;
     }
 
-    private static JsonArray getCurrencies()
-    {
+    private static JsonArray getCurrencies() {
         JsonArray jsonArray = new JsonArray();
         //noinspection ConstantConditions
         Cursor c = DBHelper.get(App.getAppContext()).getReadableDatabase().query(Tables.Currencies.TABLE_NAME, null, null, null, null, null, null);
-        try
-        {
-            if (c != null && c.moveToFirst())
-            {
+        try {
+            if (c != null && c.moveToFirst()) {
                 final int iId = c.getColumnIndex(Tables.Currencies.ID);
                 final int iServerId = c.getColumnIndex(Tables.Currencies.SERVER_ID);
                 final int iCode = c.getColumnIndex(Tables.Currencies.CODE);
@@ -62,8 +57,7 @@ public class BackupUtils
                 final int iExchangeRate = c.getColumnIndex(Tables.Currencies.EXCHANGE_RATE);
                 final int iDeleteState = c.getColumnIndex(Tables.Currencies.DELETE_STATE);
 
-                do
-                {
+                do {
                     JsonObject json = new JsonObject();
                     json.addProperty(JTags.Currency.ID, c.getLong(iId));
                     json.addProperty(JTags.Currency.SERVER_ID, c.getString(iServerId));
@@ -80,9 +74,7 @@ public class BackupUtils
                 }
                 while (c.moveToNext());
             }
-        }
-        finally
-        {
+        } finally {
             if (c != null && !c.isClosed())
                 c.close();
         }
@@ -90,15 +82,12 @@ public class BackupUtils
         return jsonArray;
     }
 
-    private static JsonArray getAccounts()
-    {
+    private static JsonArray getAccounts() {
         JsonArray jsonArray = new JsonArray();
         //noinspection ConstantConditions
         Cursor c = DBHelper.get(App.getAppContext()).getReadableDatabase().query(Tables.Accounts.TABLE_NAME, null, null, null, null, null, null);
-        try
-        {
-            if (c != null && c.moveToFirst())
-            {
+        try {
+            if (c != null && c.moveToFirst()) {
                 final int iId = c.getColumnIndex(Tables.Accounts.ID);
                 final int iServerId = c.getColumnIndex(Tables.Accounts.SERVER_ID);
                 final int iCurrencyId = c.getColumnIndex(Tables.Accounts.CURRENCY_ID);
@@ -110,8 +99,7 @@ public class BackupUtils
                 final int iOrigin = c.getColumnIndex(Tables.Accounts.ORIGIN);
                 final int iDeleteState = c.getColumnIndex(Tables.Accounts.DELETE_STATE);
 
-                do
-                {
+                do {
                     JsonObject json = new JsonObject();
                     json.addProperty(JTags.Account.ID, c.getLong(iId));
                     json.addProperty(JTags.Account.SERVER_ID, c.getString(iServerId));
@@ -127,9 +115,7 @@ public class BackupUtils
                 }
                 while (c.moveToNext());
             }
-        }
-        finally
-        {
+        } finally {
             if (c != null && !c.isClosed())
                 c.close();
         }
@@ -137,16 +123,13 @@ public class BackupUtils
         return jsonArray;
     }
 
-    private static JsonArray getCategories()
-    {
+    private static JsonArray getCategories() {
         JsonArray jsonArray = new JsonArray();
         //noinspection ConstantConditions
         Cursor c = DBHelper.get(App.getAppContext()).getReadableDatabase().query(Tables.Categories.TABLE_NAME, null, null, null, null, null, null);
         ;
-        try
-        {
-            if (c != null && c.moveToFirst())
-            {
+        try {
+            if (c != null && c.moveToFirst()) {
                 final int iId = c.getColumnIndex(Tables.Categories.ID);
                 final int iServerId = c.getColumnIndex(Tables.Categories.SERVER_ID);
                 final int iParentId = c.getColumnIndex(Tables.Categories.PARENT_ID);
@@ -159,8 +142,7 @@ public class BackupUtils
                 final int iParentOrder = c.getColumnIndex(Tables.Categories.PARENT_ORDER);
                 final int iDeleteState = c.getColumnIndex(Tables.Categories.DELETE_STATE);
 
-                do
-                {
+                do {
                     JsonObject json = new JsonObject();
                     json.addProperty(JTags.Category.ID, c.getLong(iId));
                     json.addProperty(JTags.Category.SERVER_ID, c.getString(iServerId));
@@ -177,9 +159,7 @@ public class BackupUtils
                 }
                 while (c.moveToNext());
             }
-        }
-        finally
-        {
+        } finally {
             if (c != null && !c.isClosed())
                 c.close();
         }
@@ -187,16 +167,13 @@ public class BackupUtils
         return jsonArray;
     }
 
-    private static JsonArray getTransactions()
-    {
+    private static JsonArray getTransactions() {
         JsonArray jsonArray = new JsonArray();
         //noinspection ConstantConditions
         Cursor c = DBHelper.get(App.getAppContext()).getReadableDatabase().query(Tables.Transactions.TABLE_NAME, null, null, null, null, null, null);
         ;
-        try
-        {
-            if (c != null && c.moveToFirst())
-            {
+        try {
+            if (c != null && c.moveToFirst()) {
                 final int iId = c.getColumnIndex(Tables.Transactions.ID);
                 final int iServerId = c.getColumnIndex(Tables.Transactions.SERVER_ID);
                 final int iAccountFromId = c.getColumnIndex(Tables.Transactions.ACCOUNT_FROM_ID);
@@ -210,8 +187,7 @@ public class BackupUtils
                 final int iShowInTotals = c.getColumnIndex(Tables.Transactions.SHOW_IN_TOTALS);
                 final int iDeleteState = c.getColumnIndex(Tables.Transactions.DELETE_STATE);
 
-                do
-                {
+                do {
                     JsonObject json = new JsonObject();
                     json.addProperty(JTags.Transaction.ID, c.getLong(iId));
                     json.addProperty(JTags.Transaction.SERVER_ID, c.getString(iServerId));
@@ -229,9 +205,7 @@ public class BackupUtils
                 }
                 while (c.moveToNext());
             }
-        }
-        finally
-        {
+        } finally {
             if (c != null && !c.isClosed())
                 c.close();
         }

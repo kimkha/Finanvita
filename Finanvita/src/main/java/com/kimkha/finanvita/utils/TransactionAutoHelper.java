@@ -2,6 +2,7 @@ package com.kimkha.finanvita.utils;
 
 import android.database.Cursor;
 import android.text.format.DateUtils;
+
 import com.kimkha.finanvita.db.Tables;
 import com.kimkha.finanvita.db.model.Account;
 import com.kimkha.finanvita.db.model.Category;
@@ -9,8 +10,7 @@ import com.kimkha.finanvita.db.model.Transaction;
 
 import java.util.*;
 
-public class TransactionAutoHelper
-{
+public class TransactionAutoHelper {
     private final Map<Long, Account> accountMap = new HashMap<Long, Account>();
     private final Map<Long, Category> categoryMap = new HashMap<Long, Category>();
     private final Map<Long, Transaction> transactionMap = new HashMap<Long, Transaction>();
@@ -26,54 +26,43 @@ public class TransactionAutoHelper
     private long categoryId = -1;
     private int categoryType = -1;
 
-    public TransactionAutoHelper()
-    {
+    public TransactionAutoHelper() {
     }
 
-    public static TransactionAutoHelper getInstance()
-    {
+    public static TransactionAutoHelper getInstance() {
         return new TransactionAutoHelper();
     }
 
-    public boolean isDataOk()
-    {
+    public boolean isDataOk() {
         return date > 0 && accountFromId >= 0 && accountToId >= 0 && categoryId >= 0 && categoryTypeReady && accountsReady && categoriesReady && transactionsReady;
     }
 
-    public void setDate(long date)
-    {
+    public void setDate(long date) {
         this.date = date;
     }
 
-    public void setCategoryId(long categoryId)
-    {
+    public void setCategoryId(long categoryId) {
         this.categoryId = categoryId;
     }
 
-    public void setAccountFromId(long accountFromId)
-    {
+    public void setAccountFromId(long accountFromId) {
         this.accountFromId = accountFromId;
     }
 
-    public void setAccountToId(long accountToId)
-    {
+    public void setAccountToId(long accountToId) {
         this.accountToId = accountToId;
     }
 
-    public void setCategoryType(int categoryType)
-    {
+    public void setCategoryType(int categoryType) {
         this.categoryType = categoryType;
         categoryTypeReady = categoryType == Tables.Categories.Type.EXPENSE || categoryType == Tables.Categories.Type.INCOME || categoryType == Tables.Categories.Type.TRANSFER;
     }
 
-    public void setAccounts(Cursor c)
-    {
+    public void setAccounts(Cursor c) {
         accountMap.clear();
-        if (c != null && c.moveToFirst())
-        {
+        if (c != null && c.moveToFirst()) {
             Account account;
-            do
-            {
+            do {
                 account = Account.from(c);
                 accountMap.put(account.getId(), account);
             }
@@ -83,14 +72,11 @@ public class TransactionAutoHelper
         accountsReady = true;
     }
 
-    public void setCategories(Cursor c)
-    {
+    public void setCategories(Cursor c) {
         categoryMap.clear();
-        if (c != null && c.moveToFirst())
-        {
+        if (c != null && c.moveToFirst()) {
             Category category;
-            do
-            {
+            do {
                 category = Category.from(c);
                 categoryMap.put(category.getId(), category);
             }
@@ -100,14 +86,11 @@ public class TransactionAutoHelper
         categoriesReady = true;
     }
 
-    public void setTransactions(Cursor c)
-    {
+    public void setTransactions(Cursor c) {
         transactionMap.clear();
-        if (c != null && c.moveToFirst())
-        {
+        if (c != null && c.moveToFirst()) {
             Transaction transaction;
-            do
-            {
+            do {
                 transaction = Transaction.from(c);
                 transactionMap.put(transaction.getId(), transaction);
             }
@@ -117,27 +100,22 @@ public class TransactionAutoHelper
         transactionsReady = true;
     }
 
-    public Account getAccount(AccountType accountType)
-    {
+    public Account getAccount(AccountType accountType) {
         // Check if we have any accounts
         if (accountMap.size() == 0)
             return null;
 
         // Check, maybe we are asking for system account
-        if (accountType == AccountType.FROM && categoryType == Tables.Categories.Type.INCOME)
-        {
+        if (accountType == AccountType.FROM && categoryType == Tables.Categories.Type.INCOME) {
             // If this is income, then accountFrom is always 'expense account'.
             return null;
-        }
-        else if (accountType == AccountType.TO && categoryType == Tables.Categories.Type.EXPENSE)
-        {
+        } else if (accountType == AccountType.TO && categoryType == Tables.Categories.Type.EXPENSE) {
             // If this is expense, then accountTo is always 'income account'.
             return null;
         }
 
         // If we have only 1 account, then it will always be that account, unless it's the account to avoid.
-        if (accountMap.size() == 1)
-        {
+        if (accountMap.size() == 1) {
             final Account account = accountMap.values().iterator().next();
 
             if (account.getId() == accountFromId || account.getId() == accountToId)
@@ -147,12 +125,10 @@ public class TransactionAutoHelper
         }
 
         // Check for transactions
-        if (transactionMap.size() == 0)
-        {
+        if (transactionMap.size() == 0) {
             // We don't have transactions, just use latest created account
             Account latestAccount = null;
-            for (Account account : accountMap.values())
-            {
+            for (Account account : accountMap.values()) {
                 if (account == null)
                     continue;
 
@@ -164,8 +140,7 @@ public class TransactionAutoHelper
 
         // Prepare accounts probabilitiesMap map
         final Map<Long, Probability> probabilitiesMap = new HashMap<Long, Probability>();
-        for (Account account : accountMap.values())
-        {
+        for (Account account : accountMap.values()) {
             if (account.getId() != accountFromId && account.getId() != accountToId)
                 probabilitiesMap.put(account.getId(), new Probability());
         }
@@ -180,8 +155,7 @@ public class TransactionAutoHelper
         Probability probability;
         Long accountFromId;
         Long accountToId;
-        for (Transaction transaction : transactionMap.values())
-        {
+        for (Transaction transaction : transactionMap.values()) {
             // Skip transactions that are of different type
             if (transaction.getCategory().getType() != categoryType)
                 continue;
@@ -189,8 +163,7 @@ public class TransactionAutoHelper
             accountFromId = null;
             accountToId = null;
 
-            switch (categoryType)
-            {
+            switch (categoryType) {
                 case Tables.Categories.Type.EXPENSE:
                     accountFromId = transaction.getAccountFrom().getId();
                     break;
@@ -205,8 +178,7 @@ public class TransactionAutoHelper
                     break;
             }
 
-            if (accountFromId != null && probabilitiesMap.get(accountFromId) != null)
-            {
+            if (accountFromId != null && probabilitiesMap.get(accountFromId) != null) {
                 probability = probabilitiesMap.get(accountFromId);
                 probability.addTime(date, transaction.getDate().getTime());
                 probability.addSameCategoryType(categoryType, accountType);
@@ -216,8 +188,7 @@ public class TransactionAutoHelper
                     probability.addSameCategory(Tables.Categories.IDs.TRANSFER_ID, Tables.Categories.IDs.TRANSFER_ID);
             }
 
-            if (accountToId != null && probabilitiesMap.get(accountToId) != null)
-            {
+            if (accountToId != null && probabilitiesMap.get(accountToId) != null) {
                 probability = probabilitiesMap.get(accountToId);
                 probability.addTime(date, transaction.getDate().getTime());
                 probability.addSameCategoryType(categoryType, accountType);
@@ -232,11 +203,9 @@ public class TransactionAutoHelper
         Account probableAccount = null;
         Float bestProbability = 0.0f;
         Float probabilityValue;
-        for (Long accountId : probabilitiesMap.keySet())
-        {
+        for (Long accountId : probabilitiesMap.keySet()) {
             probabilityValue = probabilitiesMap.get(accountId).getAccountProbability();
-            if (probableAccount == null || probabilityValue >= bestProbability)
-            {
+            if (probableAccount == null || probabilityValue >= bestProbability) {
                 probableAccount = accountMap.get(accountId);
                 bestProbability = probabilityValue;
             }
@@ -245,8 +214,7 @@ public class TransactionAutoHelper
         return probableAccount;
     }
 
-    public Category getCategory()
-    {
+    public Category getCategory() {
         if (categoryMap.size() == 0)
             return null;
 
@@ -256,8 +224,7 @@ public class TransactionAutoHelper
 
         // Prepare categories probabilitiesMap map
         final Map<Long, Probability> probabilitiesMap = new HashMap<Long, Probability>();
-        for (Category category : categoryMap.values())
-        {
+        for (Category category : categoryMap.values()) {
             if (category.getType() == categoryType)
                 probabilitiesMap.put(category.getId(), new Probability());
         }
@@ -265,16 +232,14 @@ public class TransactionAutoHelper
         // Iterate through all transactions and update probabilities for accounts
         Probability probability;
         Long transactionCategoryId = 0L;
-        for (Transaction transaction : transactionMap.values())
-        {
+        for (Transaction transaction : transactionMap.values()) {
             // Skip transactions that are of different type
             if (transaction.getCategory().getType() != categoryType)
                 continue;
 
             transactionCategoryId = transaction.getCategory().getId();
 
-            if (probabilitiesMap.get(transactionCategoryId) != null)
-            {
+            if (probabilitiesMap.get(transactionCategoryId) != null) {
                 probability = probabilitiesMap.get(transactionCategoryId);
                 probability.addTime(date, transaction.getDate().getTime());
                 probability.addSameAccount(categoryType == Tables.Categories.Type.EXPENSE ? accountFromId : accountToId, categoryType == Tables.Categories.Type.EXPENSE ? transaction.getAccountFrom().getId() : transaction.getAccountTo().getId());
@@ -289,11 +254,9 @@ public class TransactionAutoHelper
         Category probableCategory = null;
         Float bestProbability = 0.0f;
         Float probabilityValue;
-        for (Long categoryId : probabilitiesMap.keySet())
-        {
+        for (Long categoryId : probabilitiesMap.keySet()) {
             probabilityValue = probabilitiesMap.get(categoryId).getCategoryProbability();
-            if (probableCategory == null || probabilityValue >= bestProbability)
-            {
+            if (probableCategory == null || probabilityValue >= bestProbability) {
                 probableCategory = categoryMap.get(categoryId);
                 bestProbability = probabilityValue;
             }
@@ -302,13 +265,11 @@ public class TransactionAutoHelper
         return probableCategory;
     }
 
-    public enum AccountType
-    {
+    public enum AccountType {
         FROM, TO
     }
 
-    private static class Probability
-    {
+    private static class Probability {
         private static final long MAX_TIME_OF_DAY_DEVIATION = DateUtils.HOUR_IN_MILLIS;
         private static final long MAX_RECENCY_DEVIATION = DateUtils.DAY_IN_MILLIS * 7;
         // -------------------------------------------------------------------------------------------------------------
@@ -325,62 +286,52 @@ public class TransactionAutoHelper
         private int usedForSameCategory = 0;
         private int usedForSameAccount = 0;
 
-        public Float getAccountProbability()
-        {
+        public Float getAccountProbability() {
             return getRecencyProbability() + getAverage(timeOfDayList) + getProbability(DAY_OF_WEEK_FACTOR, dayOfWeek) + getProbability(DAY_OF_MONTH_FACTOR, dayOfMonth) + getProbability(SAME_CATEGORY_TYPE_FACTOR, usedForSameCategoryType) + getProbability(SAME_CATEGORY_FACTOR, usedForSameCategory);
         }
 
-        public Float getCategoryProbability()
-        {
+        public Float getCategoryProbability() {
             return getRecencyProbability() + getAverage(timeOfDayList) + getProbability(DAY_OF_WEEK_FACTOR, dayOfWeek) + getProbability(DAY_OF_MONTH_FACTOR, dayOfMonth) + getProbability(SAME_CATEGORY_FACTOR, usedForSameAccount);
         }
 
-        public void addTime(long date, long transactionDate)
-        {
+        public void addTime(long date, long transactionDate) {
             addRecency(date, transactionDate);
             addTimeOfDay(date, transactionDate);
             addDayOfWeek(date, transactionDate);
             addDayOfMonth(date, transactionDate);
         }
 
-        public void addSameCategoryType(int categoryType, AccountType accountType)
-        {
+        public void addSameCategoryType(int categoryType, AccountType accountType) {
             if ((accountType == AccountType.FROM && (categoryType == Tables.Categories.Type.EXPENSE || categoryType == Tables.Categories.Type.TRANSFER)) || (accountType == AccountType.TO && (categoryType == Tables.Categories.Type.INCOME || categoryType == Tables.Categories.Type.TRANSFER)))
                 usedForSameCategoryType++;
         }
 
-        public void addSameCategory(long categoryId, long transactionCategoryId)
-        {
+        public void addSameCategory(long categoryId, long transactionCategoryId) {
             if (categoryId > 0 && transactionCategoryId > 0 && categoryId == transactionCategoryId)
                 usedForSameCategory++;
         }
 
-        public void addSameAccount(long accountId, long transactionAccountId)
-        {
+        public void addSameAccount(long accountId, long transactionAccountId) {
             if (accountId > 0 && transactionAccountId > 0 && accountId == transactionAccountId)
                 usedForSameAccount++;
         }
 
-        private void addRecency(long date, long transactionDate)
-        {
+        private void addRecency(long date, long transactionDate) {
             final long deviation = Math.abs(date - transactionDate);
-            if (deviation < MAX_RECENCY_DEVIATION)
-            {
+            if (deviation < MAX_RECENCY_DEVIATION) {
                 final Float probability = 1 - ((float) deviation / MAX_RECENCY_DEVIATION);
                 if (probability > recencyProbability)
                     recencyProbability = probability;
             }
         }
 
-        private void addTimeOfDay(long date, long transactionDate)
-        {
+        private void addTimeOfDay(long date, long transactionDate) {
             final long deviation = Math.abs(date - transactionDate);
             if (deviation < MAX_TIME_OF_DAY_DEVIATION)
                 timeOfDayList.add(1 - ((float) deviation / MAX_TIME_OF_DAY_DEVIATION));
         }
 
-        private void addDayOfWeek(long date, long transactionDate)
-        {
+        private void addDayOfWeek(long date, long transactionDate) {
             final Calendar calDate = Calendar.getInstance();
             calDate.setTimeInMillis(date);
 
@@ -391,8 +342,7 @@ public class TransactionAutoHelper
                 dayOfWeek++;
         }
 
-        private void addDayOfMonth(long date, long transactionDate)
-        {
+        private void addDayOfMonth(long date, long transactionDate) {
             final Calendar calDate = Calendar.getInstance();
             calDate.setTimeInMillis(date);
 
@@ -403,13 +353,11 @@ public class TransactionAutoHelper
                 dayOfMonth++;
         }
 
-        private Float getRecencyProbability()
-        {
+        private Float getRecencyProbability() {
             return recencyProbability;
         }
 
-        private Float getAverage(List<Float> list)
-        {
+        private Float getAverage(List<Float> list) {
             Float average = 0.0f;
             for (int i = 0; i < list.size(); i++)
                 average += list.get(i);
@@ -424,8 +372,7 @@ public class TransactionAutoHelper
          * @param count
          * @return
          */
-        private Float getProbability(float factor, int count)
-        {
+        private Float getProbability(float factor, int count) {
             return count == 0 ? 0.0f : (float) -Math.exp(-factor * count) + 1;
         }
     }

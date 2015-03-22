@@ -27,19 +27,15 @@ import android.widget.Scroller;
  * the APIs from Scroller or OverScroller.</p>
  */
 @SuppressWarnings("ALL")
-public class ScrollerCompat
-{
+public class ScrollerCompat {
     Scroller mScroller;
 
-    ScrollerCompat(Context context)
-    {
+    ScrollerCompat(Context context) {
         mScroller = new Scroller(context);
     }
 
-    public static ScrollerCompat from(Context context)
-    {
-        if (android.os.Build.VERSION.SDK_INT >= 14)
-        {
+    public static ScrollerCompat from(Context context) {
+        if (android.os.Build.VERSION.SDK_INT >= 14) {
             return new ScrollerCompatImplIcs(context);
         }
         return new ScrollerCompat(context);
@@ -50,8 +46,7 @@ public class ScrollerCompat
      *
      * @return True if the scroller has finished scrolling, false otherwise.
      */
-    public boolean isFinished()
-    {
+    public boolean isFinished() {
         return mScroller.isFinished();
     }
 
@@ -60,8 +55,7 @@ public class ScrollerCompat
      *
      * @return The duration of the scroll in milliseconds.
      */
-    public int getDuration()
-    {
+    public int getDuration() {
         return mScroller.getDuration();
     }
 
@@ -70,8 +64,7 @@ public class ScrollerCompat
      *
      * @return The new X offset as an absolute distance from the origin.
      */
-    public int getCurrX()
-    {
+    public int getCurrX() {
         return mScroller.getCurrX();
     }
 
@@ -80,8 +73,7 @@ public class ScrollerCompat
      *
      * @return The new Y offset as an absolute distance from the origin.
      */
-    public int getCurrY()
-    {
+    public int getCurrY() {
         return mScroller.getCurrY();
     }
 
@@ -96,8 +88,7 @@ public class ScrollerCompat
      * @return The original velocity less the deceleration. Result may be
      * negative.
      */
-    public float getCurrVelocity()
-    {
+    public float getCurrVelocity() {
         return 0;
     }
 
@@ -106,8 +97,7 @@ public class ScrollerCompat
      * the animation is not yet finished.  loc will be altered to provide the
      * new location.
      */
-    public boolean computeScrollOffset()
-    {
+    public boolean computeScrollOffset() {
         return mScroller.computeScrollOffset();
     }
 
@@ -125,8 +115,7 @@ public class ScrollerCompat
      * @param dy     Vertical distance to travel. Positive numbers will scroll the
      *               content up.
      */
-    public void startScroll(int startX, int startY, int dx, int dy)
-    {
+    public void startScroll(int startX, int startY, int dx, int dy) {
         mScroller.startScroll(startX, startY, dx, dy);
     }
 
@@ -143,8 +132,7 @@ public class ScrollerCompat
      *                 content up.
      * @param duration Duration of the scroll in milliseconds.
      */
-    public void startScroll(int startX, int startY, int dx, int dy, int duration)
-    {
+    public void startScroll(int startX, int startY, int dx, int dy, int duration) {
         mScroller.startScroll(startX, startY, dx, dy, duration);
     }
 
@@ -168,8 +156,7 @@ public class ScrollerCompat
      *                  point.
      */
     public void fling(int startX, int startY, int velocityX, int velocityY,
-                      int minX, int maxX, int minY, int maxY)
-    {
+                      int minX, int maxX, int minY, int maxY) {
         mScroller.fling(startX, startY, velocityX, velocityY, minX, maxX, minY, maxY);
     }
 
@@ -178,21 +165,17 @@ public class ScrollerCompat
      * aborting the animating cause the scroller to move to the final x and y
      * position
      */
-    public void abortAnimation()
-    {
+    public void abortAnimation() {
         mScroller.abortAnimation();
     }
 
-    static class ScrollerCompatImplIcs extends ScrollerCompat
-    {
-        public ScrollerCompatImplIcs(Context context)
-        {
+    static class ScrollerCompatImplIcs extends ScrollerCompat {
+        public ScrollerCompatImplIcs(Context context) {
             super(context);
         }
 
         @Override
-        public float getCurrVelocity()
-        {
+        public float getCurrVelocity() {
             return ScrollerCompatIcs.getCurrVelocity(mScroller);
         }
     }

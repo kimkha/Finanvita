@@ -1,72 +1,57 @@
 package com.kimkha.finanvita.utils;
 
 import android.database.Cursor;
+
 import com.kimkha.finanvita.App;
 import com.kimkha.finanvita.db.Tables;
 import com.kimkha.finanvita.providers.CurrenciesProvider;
 
-public class CurrencyHelper
-{
+public class CurrencyHelper {
     private static CurrencyHelper instance;
     private long mainCurrencyId;
     private String mainCurrencyCode;
 
-    private CurrencyHelper()
-    {
+    private CurrencyHelper() {
         update();
     }
 
-    public static CurrencyHelper get()
-    {
+    public static CurrencyHelper get() {
         if (instance == null)
             instance = new CurrencyHelper();
         return instance;
     }
 
-    public long getMainCurrencyId()
-    {
+    public long getMainCurrencyId() {
         return mainCurrencyId;
     }
 
-    public void setMainCurrencyId(long mainCurrencyId)
-    {
+    public void setMainCurrencyId(long mainCurrencyId) {
         this.mainCurrencyId = mainCurrencyId;
     }
 
-    public String getMainCurrencyCode()
-    {
+    public String getMainCurrencyCode() {
         return mainCurrencyCode;
     }
 
-    public void setMainCurrencyCode(String mainCurrencyCode)
-    {
+    public void setMainCurrencyCode(String mainCurrencyCode) {
         this.mainCurrencyCode = mainCurrencyCode;
     }
 
-    public void update()
-    {
+    public void update() {
         Cursor c = null;
-        try
-        {
+        try {
             c = App.getAppContext().getContentResolver().query(CurrenciesProvider.uriCurrencies(), new String[]{Tables.Currencies.T_ID, Tables.Currencies.CODE}, Tables.Currencies.IS_DEFAULT + "=?", new String[]{"1"}, null);
-            if (c != null && c.moveToFirst())
-            {
+            if (c != null && c.moveToFirst()) {
                 mainCurrencyId = c.getLong(0);
                 mainCurrencyCode = c.getString(1);
-            }
-            else
-            {
+            } else {
                 mainCurrencyId = 0;
                 mainCurrencyCode = null;
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             mainCurrencyId = 0;
             mainCurrencyCode = null;
-        }
-        finally
-        {
+        } finally {
             if (c != null && !c.isClosed())
                 c.close();
         }

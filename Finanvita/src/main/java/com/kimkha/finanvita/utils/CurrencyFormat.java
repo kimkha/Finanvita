@@ -5,17 +5,14 @@ import com.kimkha.finanvita.db.Tables;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 
-public class CurrencyFormat
-{
+public class CurrencyFormat {
     private final DecimalFormat decimalFormat;
 
-    public CurrencyFormat()
-    {
+    public CurrencyFormat() {
         decimalFormat = (DecimalFormat) DecimalFormat.getInstance();
     }
 
-    public CurrencyFormat(char groupSeparator, char decimalSeparator, int decimals, String symbol, String symbolFormat)
-    {
+    public CurrencyFormat(char groupSeparator, char decimalSeparator, int decimals, String symbol, String symbolFormat) {
         decimalFormat = (DecimalFormat) DecimalFormat.getInstance();
 
         // Setup symbols
@@ -27,30 +24,22 @@ public class CurrencyFormat
         decimalFormat.setDecimalFormatSymbols(symbols);
         decimalFormat.setMinimumFractionDigits(decimals);
         decimalFormat.setMaximumFractionDigits(decimals);
-        if (symbolFormat.equalsIgnoreCase(Tables.Currencies.SymbolFormat.LEFT_FAR))
-        {
+        if (symbolFormat.equalsIgnoreCase(Tables.Currencies.SymbolFormat.LEFT_FAR)) {
             decimalFormat.setPositivePrefix(symbol + " ");
             decimalFormat.setNegativePrefix(symbol + " -");
-        }
-        else if (symbolFormat.equalsIgnoreCase(Tables.Currencies.SymbolFormat.LEFT_CLOSE))
-        {
+        } else if (symbolFormat.equalsIgnoreCase(Tables.Currencies.SymbolFormat.LEFT_CLOSE)) {
             decimalFormat.setPositivePrefix(symbol);
             decimalFormat.setNegativePrefix(symbol + "-");
-        }
-        else if (symbolFormat.equalsIgnoreCase(Tables.Currencies.SymbolFormat.RIGHT_FAR))
-        {
+        } else if (symbolFormat.equalsIgnoreCase(Tables.Currencies.SymbolFormat.RIGHT_FAR)) {
             decimalFormat.setPositiveSuffix(" " + symbol);
             decimalFormat.setNegativeSuffix(" " + symbol);
-        }
-        else
-        {
+        } else {
             decimalFormat.setPositiveSuffix(symbol);
             decimalFormat.setNegativeSuffix(symbol);
         }
     }
 
-    public String format(double value)
-    {
+    public String format(double value) {
         return decimalFormat.format(value);
     }
 }

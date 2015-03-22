@@ -4,12 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.format.DateUtils;
+
 import com.kimkha.finanvita.ui.settings.lock.LockActivity;
 import com.kimkha.finanvita.ui.settings.lock.LockFragment;
 import com.kimkha.finanvita.ui.settings.lock.LockPatternFragment;
 
-public class SecurityHelper
-{
+public class SecurityHelper {
     public static final int APP_LOCK_NONE = 0;
     public static final int APP_LOCK_PATTERN = 1;
     // --------------------------------------------------------------------------------------------------------------------------------
@@ -29,8 +29,7 @@ public class SecurityHelper
     private long unlockTimestamp;
     private long unlockDuration;
 
-    private SecurityHelper(Context context)
-    {
+    private SecurityHelper(Context context) {
         this.context = context.getApplicationContext();
 
         // Read security preferences
@@ -41,15 +40,13 @@ public class SecurityHelper
         unlockDuration = prefs.getLong(PrefsHelper.PREF_SECURITY_UNLOCK_DURATION, DEFAULT_APP_UNLOCK_DURATION);
     }
 
-    public static SecurityHelper getDefault(Context context)
-    {
+    public static SecurityHelper getDefault(Context context) {
         if (instance == null)
             instance = new SecurityHelper(context);
         return instance;
     }
 
-    public void setNewCode(int appLock, String lockCode)
-    {
+    public void setNewCode(int appLock, String lockCode) {
         this.appLock = appLock;
         this.lockCode = lockCode;
         this.unlockTimestamp = System.currentTimeMillis();
@@ -58,16 +55,14 @@ public class SecurityHelper
         PrefsHelper.storeLong(context, PrefsHelper.PREF_SECURITY_LAST_UNLOCK_TIMESTAMP, unlockTimestamp);
     }
 
-    public void updateUnlockTimestamp()
-    {
+    public void updateUnlockTimestamp() {
         if (appLock == APP_LOCK_NONE)
             return;
         this.unlockTimestamp = System.currentTimeMillis();
         PrefsHelper.storeLong(context, PrefsHelper.PREF_SECURITY_LAST_UNLOCK_TIMESTAMP, unlockTimestamp);
     }
 
-    public void clearLock()
-    {
+    public void clearLock() {
         this.appLock = APP_LOCK_NONE;
         this.lockCode = null;
         this.unlockTimestamp = 0;
@@ -76,16 +71,14 @@ public class SecurityHelper
         PrefsHelper.storeLong(context, PrefsHelper.PREF_SECURITY_LAST_UNLOCK_TIMESTAMP, unlockTimestamp);
     }
 
-    public int getAppLockCode()
-    {
+    public int getAppLockCode() {
         return appLock;
     }
 
     /**
      * Checks if it's necessary to unlock the app.
      */
-    public void checkSecurity(Activity activity, boolean force)
-    {
+    public void checkSecurity(Activity activity, boolean force) {
         // If app lock is not set or we are still withing allowed unlock duration and we are not forcing unlock, then no need to unlock
         if (appLock == APP_LOCK_NONE || (System.currentTimeMillis() - unlockTimestamp <= unlockDuration && !force))
             return;
@@ -94,20 +87,16 @@ public class SecurityHelper
         LockActivity.startLockCompare(activity);
     }
 
-    public LockFragment getLockFragmentForUnlock()
-    {
+    public LockFragment getLockFragmentForUnlock() {
         return getLockFragment(appLock, LockFragment.LT_COMPARE, lockCode);
     }
 
-    public LockFragment getLockFragmentForNew(int newAppLock)
-    {
+    public LockFragment getLockFragmentForNew(int newAppLock) {
         return getLockFragment(newAppLock, LockFragment.LT_NEW, null);
     }
 
-    private LockFragment getLockFragment(int appLock, int lockType, String lockCode)
-    {
-        switch (appLock)
-        {
+    private LockFragment getLockFragment(int appLock, int lockType, String lockCode) {
+        switch (appLock) {
             case APP_LOCK_PATTERN:
                 return LockPatternFragment.newInstance(lockType, lockCode);
         }

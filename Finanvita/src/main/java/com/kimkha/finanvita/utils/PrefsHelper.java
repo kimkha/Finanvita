@@ -4,11 +4,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.text.format.DateUtils;
+
 import com.kimkha.finanvita.ui.settings.SettingsActivity;
+
 import de.greenrobot.event.EventBus;
 
-public class PrefsHelper
-{
+public class PrefsHelper {
     // Security
     // --------------------------------------------------------------------------------------------------------------------------------
     public static final String PREFIX_SECURITY = "security_settings_";
@@ -55,8 +56,7 @@ public class PrefsHelper
     private boolean showDonateInNavigation;
     private boolean focusCategoriesSearch;
 
-    private PrefsHelper(Context context)
-    {
+    private PrefsHelper(Context context) {
         this.context = context.getApplicationContext();
 
         final SharedPreferences prefs = getPrefs(context);
@@ -69,82 +69,68 @@ public class PrefsHelper
         focusCategoriesSearch = prefs.getBoolean(PREF_SETTINGS_FOCUS_CATEGORIES_SEARCH, false);
     }
 
-    public static PrefsHelper getDefault(Context context)
-    {
+    public static PrefsHelper getDefault(Context context) {
         if (instance == null)
             instance = new PrefsHelper(context);
         return instance;
     }
 
-    public static SharedPreferences getPrefs(Context context)
-    {
+    public static SharedPreferences getPrefs(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context);
     }
 
-    public static void storeString(Context context, String key, String value)
-    {
+    public static void storeString(Context context, String key, String value) {
         getPrefs(context).edit().putString(key, value).apply();
     }
 
-    public static void storeInt(Context context, String key, int value)
-    {
+    public static void storeInt(Context context, String key, int value) {
         getPrefs(context).edit().putInt(key, value).apply();
     }
 
-    public static void storeLong(Context context, String key, long value)
-    {
+    public static void storeLong(Context context, String key, long value) {
         getPrefs(context).edit().putLong(key, value).apply();
     }
 
-    public static void storeBoolean(Context context, String key, boolean value)
-    {
+    public static void storeBoolean(Context context, String key, boolean value) {
         getPrefs(context).edit().putBoolean(key, value).apply();
     }
 
-    public static String getLastSuccessfulServiceWorkTimePrefName(String prefix, int requestType, String suffix)
-    {
+    public static String getLastSuccessfulServiceWorkTimePrefName(String prefix, int requestType, String suffix) {
         return PREFIX_SERVICE + prefix + "_" + requestType + (suffix != null ? suffix : "");
     }
 
     // -----------------------------------------------------------------------------------------------------------------
 
-    public void onAppStart()
-    {
+    public void onAppStart() {
         if (firstAppStart == 0)
             firstAppStart = System.currentTimeMillis();
         storeLong(context, PREF_FIRST_APP_START, firstAppStart);
     }
 
-    public boolean isEnoughTimeForDonateInNavigation()
-    {
+    public boolean isEnoughTimeForDonateInNavigation() {
         return System.currentTimeMillis() - firstAppStart > DateUtils.WEEK_IN_MILLIS * 2;
     }
 
-    public boolean showDonateInNavigation()
-    {
+    public boolean showDonateInNavigation() {
         return showDonateInNavigation;
     }
 
-    public void setShowDonateInNavigation(boolean showDonateInNavigation)
-    {
+    public void setShowDonateInNavigation(boolean showDonateInNavigation) {
         this.showDonateInNavigation = showDonateInNavigation;
         storeBoolean(context, PREF_SHOW_DONATE_IN_NAVIGATION, showDonateInNavigation);
         EventBus.getDefault().post(new ShowDonateInNavigationChangedEvent());
     }
 
-    public boolean isFocusCategoriesSearch()
-    {
+    public boolean isFocusCategoriesSearch() {
         return focusCategoriesSearch;
     }
 
-    public void setFocusCategoriesSearch(boolean focusCategoriesSearch)
-    {
+    public void setFocusCategoriesSearch(boolean focusCategoriesSearch) {
         this.focusCategoriesSearch = focusCategoriesSearch;
     }
 
     // -----------------------------------------------------------------------------------------------------------------
 
-    public static class ShowDonateInNavigationChangedEvent
-    {
+    public static class ShowDonateInNavigationChangedEvent {
     }
 }

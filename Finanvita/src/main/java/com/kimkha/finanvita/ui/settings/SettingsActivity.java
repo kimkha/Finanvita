@@ -24,6 +24,7 @@ import com.kimkha.finanvita.ui.currencies.CurrencyListActivity;
 import com.kimkha.finanvita.ui.settings.donate.DonateActivity;
 import com.kimkha.finanvita.ui.settings.lock.LockActivity;
 import com.kimkha.finanvita.utils.ExchangeRatesHelper;
+import com.kimkha.finanvita.utils.LanguageHelper;
 import com.kimkha.finanvita.utils.PeriodHelper;
 import com.kimkha.finanvita.utils.PrefsHelper;
 import com.kimkha.finanvita.utils.SecurityHelper;
@@ -36,6 +37,7 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
     public static final String PREF_UPDATE_EXCHANGE_RATES = "update_exchange_rates";
     public static final String PREF_CATEGORIES = "categories";
     public static final String PREF_FOCUS_CATEGORIES_SEARCH = "focus_categories_search";
+    public static final String PREF_LANGUAGES = "languages";
     public static final String PREF_APP_LOCK = "app_lock";
     public static final String PREF_APP_LOCK_PATTERN = "app_lock_pattern";
     public static final String PREF_APP_LOCK_NONE = "app_lock_none";
@@ -48,6 +50,7 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
     private Preference appLock_P;
     private Preference changeLog_P;
     private ListPreference updateExchangeRates_P;
+    private ListPreference languages_P;
 
     public static void startSettings(Context context)
     {
@@ -74,6 +77,7 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
         updateExchangeRates_P = (ListPreference) findPreference(PREF_UPDATE_EXCHANGE_RATES);
         appLock_P = findPreference(PREF_APP_LOCK);
         changeLog_P = findPreference(PREF_CHANGE_LOG);
+        languages_P = (ListPreference) findPreference(PREF_LANGUAGES);
 
         // Set OnPreferenceClickListener
         findPreference(PREF_CURRENCIES).setOnPreferenceClickListener(this);
@@ -89,6 +93,7 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
         period_P.setOnPreferenceChangeListener(this);
         updateExchangeRates_P.setOnPreferenceChangeListener(this);
         findPreference(PREF_FOCUS_CATEGORIES_SEARCH).setOnPreferenceChangeListener(this);
+        languages_P.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -124,6 +129,18 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key)
     {
         updatePreferences();
+
+        // Need restart activity
+        if (LanguageHelper.getDefault(this).isChanged()) {
+            LanguageHelper.getDefault(this).startNewLanguage();
+            restartActivity();
+        }
+    }
+
+    private void restartActivity() {
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
     }
 
     @Override
@@ -199,6 +216,10 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
         {
             PrefsHelper.getDefault(this).setFocusCategoriesSearch((Boolean) newValue);
             return true;
+        } else if (preference.getKey().equals(PREF_LANGUAGES))
+        {
+            LanguageHelper.getDefault(this).setLangCode((String) newValue);
+            return true;
         }
         return false;
     }
@@ -254,8 +275,11 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
 
     private void updatePreferences()
     {
-        // Update exchange rates
+        // Update exchange rates summary
         updateExchangeRates_P.setSummary(updateExchangeRates_P.getEntry());
+        // Update summary for period
         period_P.setSummary(period_P.getEntry());
+        // Update summary for language
+        languages_P.setSummary(languages_P.getEntry());
     }
 }

@@ -34,6 +34,22 @@
         <item>4</item>
     </string-array>
 
+    <string-array name="languages">
+        <item>System</item>
+        <item>@string/lang_en</item>
+        <item>@string/lang_vi</item>
+    </string-array>
+    <string-array name="language_values">
+        <item>none</item>
+        <item>en</item>
+        <item>vi</item>
+    </string-array>
+
+    <!-- Language name -->
+    <!-- ======================================================================================================== -->
+    <string name="lang_en">English</string>
+    <string name="lang_vi">Tiếng Việt</string>
+
     <!-- Calc -->
     <!-- ======================================================================================================== -->
     <string name="calc_0">0</string>

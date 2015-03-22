@@ -2,6 +2,8 @@ package com.kimkha.finanvita;
 
 import android.app.Application;
 import android.content.Context;
+
+import com.kimkha.finanvita.utils.LanguageHelper;
 import com.kimkha.finanvita.utils.PrefsHelper;
 
 public class App extends Application
@@ -18,6 +20,7 @@ public class App extends Application
     {
         super.onCreate();
         appContext = this;
+        LanguageHelper.getDefault(this).startNewLanguage();
         PrefsHelper.getDefault(this).onAppStart();
     }
 }

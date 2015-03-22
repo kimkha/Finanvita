@@ -35,40 +35,76 @@
     </string-array>
 
     <string-array name="languages">
-        <item>System</item>
+        <item>@string/system_default</item>
+        <item>@string/lang_de</item>
         <item>@string/lang_en</item>
+        <item>@string/lang_es</item>
+        <item>@string/lang_fr</item>
+        <item>@string/lang_id</item>
+        <item>@string/lang_it</item>
+        <item>@string/lang_lt</item>
+        <item>@string/lang_pt_br</item>
+        <item>@string/lang_ru</item>
+        <item>@string/lang_sk</item>
+        <item>@string/lang_tr</item>
         <item>@string/lang_vi</item>
+        <item>@string/lang_zh</item>
+        <item>@string/lang_zh_tw</item>
     </string-array>
     <string-array name="language_values">
         <item>none</item>
+        <item>de</item>
         <item>en</item>
+        <item>es</item>
+        <item>fr</item>
+        <item>id</item>
+        <item>it</item>
+        <item>lt</item>
+        <item>pt-BR</item>
+        <item>ru</item>
+        <item>sk</item>
+        <item>tr</item>
         <item>vi</item>
+        <item>zh</item>
+        <item>zh-TW</item>
     </string-array>
 
     <!-- Language name -->
     <!-- ======================================================================================================== -->
-    <string name="lang_en">English</string>
-    <string name="lang_vi">Tiếng Việt</string>
+    <string name="lang_de" translatable="false">Deutsch</string>
+    <string name="lang_en" translatable="false">English</string>
+    <string name="lang_es" translatable="false">Español</string>
+    <string name="lang_fr" translatable="false">Français</string>
+    <string name="lang_id" translatable="false">Bahasa Indonesia</string>
+    <string name="lang_it" translatable="false">Italiano</string>
+    <string name="lang_lt" translatable="false">Lietuvių</string>
+    <string name="lang_pt_br" translatable="false">Português (Brasil)</string>
+    <string name="lang_ru" translatable="false">Русский</string>
+    <string name="lang_sk" translatable="false">Slovenčina</string>
+    <string name="lang_tr" translatable="false">Türkçe</string>
+    <string name="lang_vi" translatable="false">Tiếng Việt</string>
+    <string name="lang_zh" translatable="false">中文</string>
+    <string name="lang_zh_tw" translatable="false">中文 (台湾)</string>
 
     <!-- Calc -->
     <!-- ======================================================================================================== -->
-    <string name="calc_0">0</string>
-    <string name="calc_1">1</string>
-    <string name="calc_2">2</string>
-    <string name="calc_3">3</string>
-    <string name="calc_4">4</string>
-    <string name="calc_5">5</string>
-    <string name="calc_6">6</string>
-    <string name="calc_7">7</string>
-    <string name="calc_8">8</string>
-    <string name="calc_9">9</string>
-    <string name="calc_div">÷</string>
-    <string name="calc_mul">×</string>
-    <string name="calc_sub">-</string>
-    <string name="calc_add">+</string>
-    <string name="calc_decimal">.</string>
-    <string name="calc_equals">=</string>
-    <string name="calc_done">✓</string>
+    <string name="calc_0" translatable="false">0</string>
+    <string name="calc_1" translatable="false">1</string>
+    <string name="calc_2" translatable="false">2</string>
+    <string name="calc_3" translatable="false">3</string>
+    <string name="calc_4" translatable="false">4</string>
+    <string name="calc_5" translatable="false">5</string>
+    <string name="calc_6" translatable="false">6</string>
+    <string name="calc_7" translatable="false">7</string>
+    <string name="calc_8" translatable="false">8</string>
+    <string name="calc_9" translatable="false">9</string>
+    <string name="calc_div" translatable="false">÷</string>
+    <string name="calc_mul" translatable="false">×</string>
+    <string name="calc_sub" translatable="false">-</string>
+    <string name="calc_add" translatable="false">+</string>
+    <string name="calc_decimal" translatable="false">.</string>
+    <string name="calc_equals" translatable="false">=</string>
+    <string name="calc_done" translatable="false">✓</string>
 
     <!-- Colors -->
     <!-- ======================================================================================================== -->

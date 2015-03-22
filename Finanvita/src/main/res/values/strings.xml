@@ -69,7 +69,7 @@
     <string name="pick_main_category">Pick main category</string>
     <string name="create_new_main_category">Create new main category</string>
     <string name="search_categories">Search categories</string>
-    <string name="languages">Languages</string>
+    <string name="languages" translatable="false">Languages</string>
     <string name="backup">Backup</string>
     <string name="enable_backup">Enable backup</string>
     <string name="disable_backup">Disable backup</string>
@@ -223,5 +223,8 @@
     <string name="lock_pattern_created">Your new unlock pattern:</string>
     <string name="lock_pattern_compare">Draw pattern to unlock:</string>
     <string name="lock_pattern_error_compare">Sorry, try again…</string>
+
+    <!-- New -->
+    <string name="system_default">System Default</string>
 
 </resources>

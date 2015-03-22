@@ -207,4 +207,5 @@
     <string name="show_backups">Sicherungen anzeigen</string>
     <string name="export">Exportieren</string>
     <string name="please_wait">Bitte warten</string>
+    <string name="system_default">System Default</string>
 </resources>

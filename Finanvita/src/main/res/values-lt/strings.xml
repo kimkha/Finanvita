@@ -207,4 +207,5 @@
     <string name="show_backups">Rodyti atsargines kopijas</string>
     <string name="export">Eksportuoti</string>
     <string name="please_wait">Prašau palaukti</string>
+    <string name="system_default">System Default</string>
 </resources>

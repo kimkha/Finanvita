@@ -207,4 +207,5 @@
     <string name="show_backups">Tampilkan rekam ulang</string>
     <string name="export">Ekspor</string>
     <string name="please_wait">Mohon tunggu</string>
+    <string name="system_default">System Default</string>
 </resources>

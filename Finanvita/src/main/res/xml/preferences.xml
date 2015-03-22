@@ -29,9 +29,7 @@
             android:title="@string/search_categories"
             android:summaryOn="@string/l_auto_search_categories_on"
             android:summaryOff="@string/l_auto_search_categories_off" />
-    </PreferenceCategory>
 
-    <PreferenceCategory android:title="Personal">
         <ListPreference
             android:key="languages"
             android:title="@string/languages"

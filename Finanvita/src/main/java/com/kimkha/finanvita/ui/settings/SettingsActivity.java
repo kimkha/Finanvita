@@ -21,6 +21,7 @@ import com.kimkha.finanvita.ui.AboutActivity;
 import com.kimkha.finanvita.ui.backup.YourDataActivity;
 import com.kimkha.finanvita.ui.categories.CategoryListActivity;
 import com.kimkha.finanvita.ui.currencies.CurrencyListActivity;
+import com.kimkha.finanvita.ui.dialogs.ProgressDialog2;
 import com.kimkha.finanvita.ui.settings.donate.DonateActivity;
 import com.kimkha.finanvita.ui.settings.lock.LockActivity;
 import com.kimkha.finanvita.utils.ExchangeRatesHelper;
@@ -218,6 +219,7 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
             return true;
         } else if (preference.getKey().equals(PREF_LANGUAGES))
         {
+            ProgressDialog2.showDialog(getFragmentManager(), getString(R.string.please_wait));
             LanguageHelper.getDefault(this).setLangCode((String) newValue);
             return true;
         }

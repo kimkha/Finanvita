@@ -14,10 +14,13 @@ import android.text.style.TypefaceSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
+import com.kimkha.finanvita.App;
 import com.kimkha.finanvita.R;
+import com.kimkha.finanvita.ui.dialogs.ProgressDialog2;
 import com.kimkha.finanvita.ui.settings.SettingsActivity;
 import com.kimkha.finanvita.ui.settings.lock.LockActivity;
 import com.kimkha.finanvita.utils.SecurityHelper;
@@ -25,7 +28,9 @@ import com.kimkha.finanvita.utils.SecurityHelper;
 import java.util.HashMap;
 
 /**
- * Created by Mantas on 25/05/13.
+ * @author kimkha
+ * @since 25/05/13
+ * @version 0.2
  */
 public abstract class BaseActivity extends FragmentActivity
 {
@@ -193,6 +198,16 @@ public abstract class BaseActivity extends FragmentActivity
         getActionBar().setTitle(ssb);
     }
 
+    public void showProgressDialog() {
+        ProgressDialog2.showDialog(getFragmentManager(), getString(R.string.please_wait));
+    }
+    public void dismissProgressDialog() {
+        ProgressDialog2.dismissDialog(getFragmentManager());
+    }
+
+    public void showShortToast(String msg) {
+        Toast.makeText(App.getAppContext(), msg, Toast.LENGTH_SHORT).show();
+    }
 
     /**
      * Enum used to identify the tracker that needs to be used for tracking.

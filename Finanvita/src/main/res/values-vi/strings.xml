@@ -119,7 +119,7 @@
     <string name="your_data">Dữ liệu của bạn</string>
     <string name="show_backups">Hiển thị bản sao lưu</string>
     <string name="export">Xuất ra</string>
-    <string name="please_wait">Vui long chờ</string>
+    <string name="please_wait">Vui lòng chờ</string>
     <string name="change_account_currency">Đổi tiền tệ của tài khoản</string>
 
     <string name="f_x_deleted">%d đã xoá</string>

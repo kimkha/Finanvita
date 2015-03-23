@@ -7,6 +7,7 @@ import android.content.IntentSender;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.ResultCallback;
@@ -83,6 +84,9 @@ public class YourDataActivity extends BaseActivity implements GoogleApiClient.Co
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
+        if (resultCode == Activity.RESULT_CANCELED)
+            dismissProgressDialog();
+
         switch (requestCode)
         {
             case REQUEST_RESOLVE_ERROR:
@@ -112,7 +116,6 @@ public class YourDataActivity extends BaseActivity implements GoogleApiClient.Co
     @Override
     public void onConnectionSuspended(int i)
     {
-
     }
 
     @Override
@@ -137,6 +140,7 @@ public class YourDataActivity extends BaseActivity implements GoogleApiClient.Co
     public void onRequestBackup()
     {
         doBackup = true;
+        showProgressDialog();
         connectClient();
     }
 
@@ -144,6 +148,7 @@ public class YourDataActivity extends BaseActivity implements GoogleApiClient.Co
     public void onRequestRestore()
     {
         doRestore = true;
+        showProgressDialog();
         connectClient();
     }
 
@@ -244,7 +249,7 @@ public class YourDataActivity extends BaseActivity implements GoogleApiClient.Co
         }
     }
 
-    public static class BackupAsyncTask extends AsyncTask<DriveFile, Void, Boolean>
+    public class BackupAsyncTask extends AsyncTask<DriveFile, Void, Boolean>
     {
         private final GoogleApiClient client;
 
@@ -279,12 +284,13 @@ public class YourDataActivity extends BaseActivity implements GoogleApiClient.Co
         @Override
         protected void onPostExecute(Boolean result)
         {
+            dismissProgressDialog();
             if (!result)
             {
                 Toast.makeText(App.getAppContext(), "Error while creating backup", Toast.LENGTH_SHORT).show();
                 return;
             }
-            Toast.makeText(App.getAppContext(), "Successfully created backup", Toast.LENGTH_SHORT).show();
+            showShortToast("Successfully created backup");
         }
     }
 
@@ -343,6 +349,7 @@ public class YourDataActivity extends BaseActivity implements GoogleApiClient.Co
         {
             super.onPostExecute(e);
 
+            dismissProgressDialog();
             if (e != null)
             {
                 Toast.makeText(App.getAppContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -350,7 +357,7 @@ public class YourDataActivity extends BaseActivity implements GoogleApiClient.Co
             }
             else
             {
-                Toast.makeText(App.getAppContext(), "Restored successfully", Toast.LENGTH_SHORT).show();
+                showShortToast("Restored successfully");
             }
         }
     }

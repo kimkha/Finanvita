@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import com.kimkha.finanvita.R;
 import com.kimkha.finanvita.adapters.NavigationAdapter;
+import com.kimkha.finanvita.ui.settings.SettingsActivity;
 import com.kimkha.finanvita.ui.settings.donate.DonateActivity;
 import com.kimkha.finanvita.utils.PrefsHelper;
 import de.greenrobot.event.EventBus;
@@ -71,7 +72,8 @@ public class NavigationFragment extends BaseFragment implements AdapterView.OnIt
         ((TextView) donate_V.findViewById(R.id.title_TV)).setText(R.string.donate);
         donate_V.setOnClickListener(this);
         donate_V.setBackgroundResource(R.drawable.btn_borderless);
-        donate_V.setVisibility(PrefsHelper.getDefault(getActivity()).isEnoughTimeForDonateInNavigation() && PrefsHelper.getDefault(getActivity()).showDonateInNavigation() ? View.VISIBLE : View.GONE);
+        boolean showDonate = PrefsHelper.getDefault(getActivity()).isEnoughTimeForDonateInNavigation() && PrefsHelper.getDefault(getActivity()).showDonateInNavigation();
+        donate_V.setVisibility(showDonate ? View.VISIBLE : View.GONE);
 
         // Select initial menu item
         final int defaultPosition = 0; // Overview

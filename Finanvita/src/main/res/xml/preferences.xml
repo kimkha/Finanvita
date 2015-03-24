@@ -72,6 +72,7 @@
             android:key="your_data"
             android:title="@string/your_data" />
     </PreferenceCategory>
+
     <PreferenceCategory android:title="@string/about">
         <Preference
             android:key="donate"

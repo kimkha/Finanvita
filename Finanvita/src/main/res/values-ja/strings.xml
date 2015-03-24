@@ -1,0 +1,225 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <string name="ok">OK</string>
+    <string name="cancel">キャンセル</string>
+    <string name="yes">はい</string>
+    <string name="no">いいえ</string>
+    <string name="done">終わった</string>
+    <string name="discard">捨てる</string>
+    <string name="create">作る</string>
+    <string name="edit">編集</string>
+    <string name="delete">削除</string>
+    <string name="undo">取り消す</string>
+    <string name="back">バック</string>
+    <string name="previous">前</string>
+    <string name="next">次</string>
+    <string name="empty">空の</string>
+    <string name="set">セット</string>
+    <string name="settings">設定</string>
+    <string name="search">検索</string>
+    <string name="other">その他</string>
+    <string name="none">なし</string>
+    <string name="never">決して</string>
+    <string name="about">約</string>
+    <string name="open_navigation">オープンナビゲーション</string>
+    <string name="close_navigation">閉じるナビゲーション</string>
+    <string name="lists">リスト</string>
+    <string name="tags">タグ</string>
+    <string name="information">情報</string>
+    <string name="general">一般的な</string>
+    <string name="period">期間</string>
+    <string name="day">デイ</string>
+    <string name="week">週</string>
+    <string name="month">月</string>
+    <string name="year">年</string>
+    <string name="income">収入</string>
+    <string name="expense">費用</string>
+    <string name="transfer">転送</string>
+    <string name="title">タイトル</string>
+    <string name="balance">バランス</string>
+    <string name="date">日付</string>
+    <string name="note">注意</string>
+    <string name="reports">レポート</string>
+    <string name="categories_report">カテゴリーレポート</string>
+    <string name="security">セキュリティ</string>
+    <string name="color">色</string>
+    <string name="select_color">色を選択</string>
+    <string name="notifications">通知</string>
+    <string name="overview">概要</string>
+    <string name="selection">セレクション</string>
+    <string name="donate">寄付する</string>
+    <string name="show_donate_in_navigation">ショーナビゲーションに寄付</string>
+    <string name="account">アカウント</string>
+    <string name="accounts">アカウント</string>
+    <string name="create_account">アカウントを作成する</string>
+    <string name="overdraft">当座貸越</string>
+    <string name="account_balance_update">口座残高の更新</string>
+    <string name="transactions">取引</string>
+    <string name="transaction">トランザクション</string>
+    <string name="create_transaction">トランザクションを作成します。</string>
+    <string name="from_account">アカウントから</string>
+    <string name="to_account">アカウントに</string>
+    <string name="amount">額</string>
+    <string name="confirmed">確認された</string>
+    <string name="pending">ペンディング</string>
+    <string name="category">カテゴリ</string>
+    <string name="categories">カテゴリー</string>
+    <string name="sub_categories">サブカテゴリ</string>
+    <string name="pick_main_category">主なカテゴリを選択してください</string>
+    <string name="create_new_main_category">新しいメインカテゴリを作成します。</string>
+    <string name="search_categories">検索カテゴリ</string>
+    <string name="languages">言語</string>
+    <string name="backup">バックアップ</string>
+    <string name="enable_backup">バックアップを有効にする</string>
+    <string name="disable_backup">バックアップを無効にする</string>
+    <string name="backup_date">バックアップの日付</string>
+    <string name="restore">復元する</string>
+    <string name="backup_not_found">バックアップが見つかりません。</string>
+    <string name="device_name">装置名</string>
+    <string name="rate_app">レートアプリ</string>
+    <string name="change_log">変更ログ</string>
+    <string name="budgets">予算</string>
+    <string name="budget">バジェット</string>
+    <string name="wish_list">欲しい物のリスト</string>
+    <string name="recurring_transactions">定期的な取引を</string>
+    <string name="places">場所</string>
+    <string name="people">ピープル</string>
+    <string name="transaction_templates">トランザクションテンプレート</string>
+    <string name="currencies">通貨</string>
+    <string name="currency">通貨</string>
+    <string name="format">フォーマット</string>
+    <string name="code">コー​​ド</string>
+    <string name="currency_code">通貨コード</string>
+    <string name="main_currency">主な通貨</string>
+    <string name="space">スペース</string>
+    <string name="currency_symbol">通貨文字</string>
+    <string name="exchange_rate">為替レート</string>
+    <string name="thousands_separator">3桁ごとの区切り文字</string>
+    <string name="decimal_separator">小数点の記号</string>
+    <string name="decimals_count">小数は数える</string>
+    <string name="refresh_rate">リフレッシュレート</string>
+    <string name="update_exchange_rates">為替レートを更新</string>
+    <string name="this_is_main_currency">これは、メイン通貨である</string>
+    <string name="over_wifi_or_mobile_network">のWi-Fiまたは携帯電話ネットワーク経由で</string>
+    <string name="over_wifi_only">のWi-Fi経由でのみ</string>
+    <string name="include_in_totals">合計に含める</string>
+    <string name="include_in_total_budget">総予算に含める</string>
+    <string name="include_in_reports">レポートに含める</string>
+    <string name="show_in_selection">選択範囲内のショー</string>
+    <string name="show_in_overview">概要で表示</string>
+    <string name="last_used">最後に使用し</string>
+    <string name="times_used">使用タイムズ</string>
+    <string name="avg_amount">平均額</string>
+    <string name="avg_expense">平均経費</string>
+    <string name="avg_income">平均所得</string>
+    <string name="negative_numbers_are_not_allowed_here">負の数は、ここで許可されていません</string>
+    <string name="filter">フィルタ</string>
+    <string name="not_set">設定されない</string>
+    <string name="export_csv">CSVへのエクスポート</string>
+    <string name="your_data">あなたのデータ</string>
+    <string name="show_backups">バックアップを表示</string>
+    <string name="export">輸出</string>
+    <string name="please_wait">お待ちください</string>
+    <string name="change_account_currency">変更アカウントの通貨</string>
+
+    <string name="f_x_deleted">%d削除された</string>
+    <string name="f_enable_backup">
+        &lt;![CDATA[To make it simple to backup &amp; restore your data you can use &lt;b&gt;Google Drive&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Press the “&lt;b&gt;%s&lt;/b&gt;” button to get started.</string>
+    <string name="f_current_main_currency_x">現在の主な通貨はある%s</string>
+    <string formatted="false" name="f_x_will_change_y_main_currency">%s変更されます%s主な通貨として</string>
+    <string name="f_exchange_rate_x">為替レート%f</string>
+
+    <string name="l_dashclock_desc">あなたの合計残高を表示します。</string>
+    <string name="l_period_expenses_empty">経費この期間いいえ</string>
+    <string name="l_currency_exists">この通貨はすでに存在します。</string>
+    <string name="l_cannot_disable_main_currency">主な通貨を変更するには、別の通貨を編集し、メイン1として設定します。</string>
+    <string name="l_no_internet_error">インターネット接続を確認して、もう一度お試しください。</string>
+    <string name="l_delete_confirmation">これを削除すると、同様に削除されているリンクされたレコードになります。あなたは、削除してもよろしいですか？</string>
+    <string name="l_currency_not_used">使用されていません</string>
+    <string name="l_currency_used">アカウント</string>
+    <string name="l_confirmed_info">すべてのデータが入力された場合、またはトランザクションが将来である場合、または自動的に生成されたときに、トランザクションは、確認しないことができる。確認されたようにあなたがそれをマークするまで、この場合、トランザクションは、レポートに含まれません。</string>
+    <string name="l_show_in_totals_info">それが選択されていない場合、このレコードは、レポートに表示されません。それはまだバランス計算に含​​まれる。</string>
+    <string name="l_transaction_not_included">この取引は、レポートに含まれていません。</string>
+    <string name="l_backup_restore">バックアップに含まれていないすべての変更が削除されます。あなたがバックアップを復元してもよろしいていますか？</string>
+    <string name="l_backup_delete">あなたは、バックアップを削除してもよろしいていますか？</string>
+    <string name="l_auto_search_categories_on">検索が自動的に開始されます</string>
+    <string name="l_auto_search_categories_off">検索が自動的に起動しません</string>
+    <string name="l_donate_greet">こんにちは、私はグエンキムKhaの、Finanvitaの開発者です</string>
+    <string name="l_donate_thank">私のアプリをご利用いただきありがとうございます。私はそれはあなたにいくつかのお金を節約するのに役立ちます願っています。私もいくつかのお金を節約支援を検討してください:)</string>
+    <string name="l_donate_thank_donate">Finanvitaの開発を支援していただきありがとうございます！</string>
+
+    <!-- Categories -->
+    <string name="c_food" tools:ignore="UnusedResources">食べ物</string>
+    <string name="c_groceries" tools:ignore="UnusedResources">食料品</string>
+    <string name="c_eating_out" tools:ignore="UnusedResources">外食</string>
+    <string name="c_lunch" tools:ignore="UnusedResources">ランチ</string>
+    <string name="c_coffee_and_snacks" tools:ignore="UnusedResources">コー​​ヒーと軽食</string>
+    <string name="c_alcohol_and_tobacco" tools:ignore="UnusedResources">アルコールやタバコ</string>
+    <string name="c_alcohol" tools:ignore="UnusedResources">アルコール</string>
+    <string name="c_tobacco" tools:ignore="UnusedResources">タバコ</string>
+    <string name="c_leisure" tools:ignore="UnusedResources">レジャー</string>
+    <string name="c_concerts" tools:ignore="UnusedResources">コンサート</string>
+    <string name="c_movies" tools:ignore="UnusedResources">ムービー</string>
+    <string name="c_books_and_magazines" tools:ignore="UnusedResources">本と雑誌</string>
+    <string name="c_games" tools:ignore="UnusedResources">ゲームズ</string>
+    <string name="c_music" tools:ignore="UnusedResources">音楽</string>
+    <string name="c_party" tools:ignore="UnusedResources">パーティー</string>
+    <string name="c_transportation" tools:ignore="UnusedResources">交通</string>
+    <string name="c_fuel" tools:ignore="UnusedResources">燃料</string>
+    <string name="c_public_transportation" tools:ignore="UnusedResources">公共交通機関</string>
+    <string name="c_taxi" tools:ignore="UnusedResources">タクシー</string>
+    <string name="c_car_maintenance" tools:ignore="UnusedResources">車の整備</string>
+    <string name="c_family" tools:ignore="UnusedResources">家族</string>
+    <string name="c_child_care" tools:ignore="UnusedResources">育児</string>
+    <string name="c_child_clothing" tools:ignore="UnusedResources">子供服</string>
+    <string name="c_child_education" tools:ignore="UnusedResources">幼児教育</string>
+    <string name="c_toys" tools:ignore="UnusedResources">トイズ</string>
+    <string name="c_health_and_beauty" tools:ignore="UnusedResources">健康と美容</string>
+    <string name="c_cosmetics" tools:ignore="UnusedResources">化粧品</string>
+    <string name="c_vitamins" tools:ignore="UnusedResources">ビタミン</string>
+    <string name="c_medicine" tools:ignore="UnusedResources">医学</string>
+    <string name="c_sports" tools:ignore="UnusedResources">スポーツの</string>
+    <string name="c_household" tools:ignore="UnusedResources">世帯</string>
+    <string name="c_appliances" tools:ignore="UnusedResources">家電</string>
+    <string name="c_furniture" tools:ignore="UnusedResources">家具</string>
+    <string name="c_house_maintenance" tools:ignore="UnusedResources">ハウスメンテナンス</string>
+    <string name="c_electronics" tools:ignore="UnusedResources">エレクトロニクス</string>
+    <string name="c_rent_and_mortgage" tools:ignore="UnusedResources">家賃と住宅ローン</string>
+    <string name="c_clothing" tools:ignore="UnusedResources">衣類</string>
+    <string name="c_clothes" tools:ignore="UnusedResources">服</string>
+    <string name="c_shoes" tools:ignore="UnusedResources">靴</string>
+    <string name="c_accessories" tools:ignore="UnusedResources">アクセサリー</string>
+    <string name="c_bills_utilities" tools:ignore="UnusedResources">手形とユーティリティ</string>
+    <string name="c_cold_water" tools:ignore="UnusedResources">冷水</string>
+    <string name="c_hot_water" tools:ignore="UnusedResources">お湯</string>
+    <string name="c_tv" tools:ignore="UnusedResources">テレビ</string>
+    <string name="c_electric" tools:ignore="UnusedResources">電動</string>
+    <string name="c_garbage_and_recycling" tools:ignore="UnusedResources">ごみとリサイクル</string>
+    <string name="c_gas" tools:ignore="UnusedResources">ガス</string>
+    <string name="c_internet" tools:ignore="UnusedResources">インターネット</string>
+    <string name="c_telephone" tools:ignore="UnusedResources">テレフォン</string>
+    <string name="c_heating" tools:ignore="UnusedResources">加熱</string>
+    <string name="c_other_expense" tools:ignore="UnusedResources">その他の費用</string>
+    <string name="c_salary" tools:ignore="UnusedResources">給与</string>
+    <string name="c_bonus" tools:ignore="UnusedResources">ボーナス</string>
+    <string name="c_scholarship" tools:ignore="UnusedResources">奨学金</string>
+    <string name="c_other_income" tools:ignore="UnusedResources">その他の収益</string>
+    <string name="c_gifts" tools:ignore="UnusedResources">ギフト</string>
+
+    <!-- Lock -->
+    <string name="app_lock">アプリロック</string>
+    <string name="pattern">パターン</string>
+    <string name="lock_removed">ロック削除</string>
+    <string name="lock_created">ロック作成</string>
+    <string name="lock_pattern_new">あなたの新しいロック解除パターンを描画：</string>
+    <string name="lock_pattern_new_in_progress">完了したら指を離します</string>
+    <string name="lock_pattern_error_new">少なくとも4ドットを接続します。再試行する...</string>
+    <string name="lock_pattern_confirm_new">確認のためのパターンを再描画：</string>
+    <string name="lock_pattern_created">あなたの新しいロック解除パターン：</string>
+    <string name="lock_pattern_compare">ロックを解除するためにパターンを描画します。</string>
+    <string name="lock_pattern_error_compare">申し訳ありませんが、もう一度試して...</string>
+
+    <!-- New -->
+    <string name="system_default">システムデフォルト</string>
+
+</resources>

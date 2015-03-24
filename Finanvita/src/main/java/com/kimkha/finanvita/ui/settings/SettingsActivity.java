@@ -24,6 +24,7 @@ import com.kimkha.finanvita.ui.currencies.CurrencyListActivity;
 import com.kimkha.finanvita.ui.dialogs.ProgressDialog2;
 import com.kimkha.finanvita.ui.settings.donate.DonateActivity;
 import com.kimkha.finanvita.ui.settings.lock.LockActivity;
+import com.kimkha.finanvita.ui.tutorial.TutorialActivity;
 import com.kimkha.finanvita.utils.ExchangeRatesHelper;
 import com.kimkha.finanvita.utils.LanguageHelper;
 import com.kimkha.finanvita.utils.PeriodHelper;
@@ -45,6 +46,7 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
     public static final String PREF_DONATE = "donate";
     public static final String PREF_RATE_APP = "rate_app";
     public static final String PREF_CHANGE_LOG = "change_log";
+    public static final String PREF_SETUP_GUIDE = "setup_guide";
     public static final String PREF_YOUR_DATA = "your_data";
     // -----------------------------------------------------------------------------------------------------------------
     private ListPreference period_P;
@@ -88,6 +90,7 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
         findPreference(PREF_DONATE).setOnPreferenceClickListener(this);
         findPreference(PREF_RATE_APP).setOnPreferenceClickListener(this);
         findPreference(PREF_YOUR_DATA).setOnPreferenceClickListener(this);
+        findPreference(PREF_SETUP_GUIDE).setOnPreferenceClickListener(this);
         changeLog_P.setOnPreferenceClickListener(this);
 
         // Set OnPreferenceChangeListener
@@ -194,6 +197,11 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
         else if (preference.getKey().equals(PREF_YOUR_DATA))
         {
             YourDataActivity.start(SettingsActivity.this);
+            return true;
+        }
+        else if (preference.getKey().equals(PREF_SETUP_GUIDE))
+        {
+            TutorialActivity.startTutorial(SettingsActivity.this, 0);
             return true;
         }
 

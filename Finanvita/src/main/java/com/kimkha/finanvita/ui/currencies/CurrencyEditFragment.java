@@ -10,12 +10,11 @@ import com.kimkha.finanvita.providers.CurrenciesProvider;
 import com.kimkha.finanvita.ui.ItemEditStepsFragment;
 import com.kimkha.finanvita.utils.CurrenciesUtils;
 
-public class CurrencyEditFragment extends ItemEditStepsFragment
-{
+public class CurrencyEditFragment extends ItemEditStepsFragment {
+
     private static final String FRAGMENT_CURRENT = "FRAGMENT_CURRENT";
 
-    public static CurrencyEditFragment newInstance(long itemId)
-    {
+    public static CurrencyEditFragment newInstance(long itemId) {
         final Bundle args = makeArgs(itemId);
 
         final CurrencyEditFragment f = new CurrencyEditFragment();

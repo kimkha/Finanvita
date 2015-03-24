@@ -81,6 +81,9 @@
             android:key="rate_app"
             android:title="@string/rate_app" />
         <Preference
+            android:key="setup_guide"
+            android:title="Setup Guide" />
+        <Preference
             android:key="change_log"
             android:title="@string/change_log" />
     </PreferenceCategory>

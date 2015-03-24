@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kimkha.finanvita">
+    package="com.kimkha.finanvita" >
 
     <!-- Permissions -->
     <!-- ======================================================================================================== -->
@@ -15,17 +15,17 @@
     <!-- ======================================================================================================== -->
     <application
         android:name=".App"
-        android:hardwareAccelerated="true"
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
 
         <!-- Activities -->
         <!-- ======================================================================================================== -->
         <activity
             android:name=".ui.MainActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,30 +33,23 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.AboutActivity" />
-
         <activity android:name=".ui.settings.SettingsActivity" />
         <activity android:name=".ui.settings.lock.LockActivity" />
         <activity android:name=".ui.settings.donate.DonateActivity" />
-
         <activity android:name=".ui.currencies.CurrencyListActivity" />
         <activity android:name=".ui.currencies.CurrencyItemActivity" />
         <activity android:name=".ui.currencies.CurrencyEditActivity" />
-
         <activity android:name=".ui.accounts.AccountListActivity" />
         <activity android:name=".ui.accounts.AccountItemActivity" />
         <activity android:name=".ui.accounts.AccountEditActivity" />
-
         <activity android:name=".ui.transactions.CalculatorActivity" />
         <activity android:name=".ui.transactions.TransactionListActivity" />
         <activity android:name=".ui.transactions.TransactionItemActivity" />
         <activity android:name=".ui.transactions.TransactionEditActivity" />
-
         <activity android:name=".ui.categories.CategoryListActivity" />
         <activity android:name=".ui.categories.CategoryItemActivity" />
         <activity android:name=".ui.categories.CategoryEditActivity" />
-
         <activity android:name=".ui.reports.CategoriesReportActivity" />
-
         <activity android:name=".ui.backup.BackupActivity" />
         <activity android:name=".ui.backup.YourDataActivity" />
 
@@ -69,7 +62,7 @@
             android:name=".services.DashClockService"
             android:icon="@drawable/ic_launcher"
             android:label="@string/app_name"
-            android:permission="com.google.android.apps.dashclock.permission.READ_EXTENSION_DATA">
+            android:permission="com.google.android.apps.dashclock.permission.READ_EXTENSION_DATA" >
             <intent-filter>
                 <action android:name="com.google.android.apps.dashclock.Extension" />
             </intent-filter>
@@ -82,8 +75,14 @@
                 android:value="@string/l_dashclock_desc" />
         </service>
 
-        <meta-data android:name="com.google.android.gms.version"
+        <meta-data
+            android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".ui.tutorial.TutorialActivity"
+            android:label="@string/title_activity_tutorial" >
+        </activity>
     </application>
 
 </manifest>

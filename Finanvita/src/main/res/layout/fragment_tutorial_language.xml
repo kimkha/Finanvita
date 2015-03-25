@@ -2,7 +2,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <TextView android:text="Language" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/mLayoutBottomButtons" >
+
+        <ImageView
+            android:src="@drawable/different_languages"
+            android:id="@+id/mImageTop"
+            android:layout_width="match_parent"
+            android:layout_height="220dp" />
+
+        <TextView android:text="@string/choose_language"
+            android:textSize="@dimen/text_large"
+            android:layout_below="@+id/mImageTop"
+            android:layout_margin="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/mLayoutBottomButtons"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="20dp"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/select_language_B"
+            android:text="@string/change_language"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            style="@style/Button.Primary" />
+
+        <TextView
+            android:text="@string/change_language_hint"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
 </RelativeLayout>

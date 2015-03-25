@@ -52,6 +52,7 @@
         <activity android:name=".ui.reports.CategoriesReportActivity" />
         <activity android:name=".ui.backup.BackupActivity" />
         <activity android:name=".ui.backup.YourDataActivity" />
+        <activity android:name=".ui.tutorial.TutorialActivity" />
 
         <!-- Services -->
         <!-- ======================================================================================================== -->
@@ -79,10 +80,6 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity
-            android:name=".ui.tutorial.TutorialActivity"
-            android:label="@string/title_activity_tutorial" >
-        </activity>
     </application>
 
 </manifest>

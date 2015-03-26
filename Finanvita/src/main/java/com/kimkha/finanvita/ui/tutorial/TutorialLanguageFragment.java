@@ -1,5 +1,6 @@
 package com.kimkha.finanvita.ui.tutorial;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -27,8 +28,24 @@ public class TutorialLanguageFragment extends BaseFragment {
 
     private List<String> languageValues = new ArrayList<>();
 
+    private TutorialActivity activity;
+
     public static TutorialLanguageFragment newInstance() {
         return new TutorialLanguageFragment();
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        this.activity = (TutorialActivity) activity;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+
+        this.activity = null;
     }
 
     @Override
@@ -74,6 +91,10 @@ public class TutorialLanguageFragment extends BaseFragment {
             public void onClick(DialogInterface dialog, int which) {
                 LanguageHelper.getDefault(getActivity()).setLangCode(languageValues.get(which));
                 dialog.dismiss();
+
+                if (activity != null) {
+                    activity.restartActivity();
+                }
             }
         });
     }

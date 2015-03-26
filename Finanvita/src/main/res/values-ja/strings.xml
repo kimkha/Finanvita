@@ -213,11 +213,11 @@
     <string name="lock_created">ロック作成</string>
     <string name="lock_pattern_new">あなたの新しいロック解除パターンを描画：</string>
     <string name="lock_pattern_new_in_progress">完了したら指を離します</string>
-    <string name="lock_pattern_error_new">少なくとも4ドットを接続します。再試行する...</string>
+    <string name="lock_pattern_error_new">少なくとも4ドットを接続します。再試行する…</string>
     <string name="lock_pattern_confirm_new">確認のためのパターンを再描画：</string>
     <string name="lock_pattern_created">あなたの新しいロック解除パターン：</string>
     <string name="lock_pattern_compare">ロックを解除するためにパターンを描画します。</string>
-    <string name="lock_pattern_error_compare">申し訳ありませんが、もう一度試して...</string>
+    <string name="lock_pattern_error_compare">申し訳ありませんが、もう一度試して…</string>
 
     <!-- New -->
     <string name="system_default">システムデフォルト</string>

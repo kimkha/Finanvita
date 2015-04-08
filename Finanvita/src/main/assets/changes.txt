@@ -1,6 +1,7 @@
 <b>v0.2</b><br>
  - Languages chooser<br>
  - Show progress dialog for backup & restore<br>
+ - App can move to SD card<br>
 <br><br>
 
 <b>v0.1.2</b><br>

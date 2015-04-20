@@ -18,3 +18,7 @@ Android Expense Manager
   - Steps to reproduce a bug.
 - Make sure to write only about ONE thing at the time. Issues that have multiple things that are being discussed, will be closed.
 - When adding images. Add image straight to description or comment. Do not put URLs if possible.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/kimkha/finanvita/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+

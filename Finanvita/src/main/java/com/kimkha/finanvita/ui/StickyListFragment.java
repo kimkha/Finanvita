@@ -88,6 +88,7 @@ public abstract class StickyListFragment extends BaseFragment implements Adapter
 
         // Get views
         list_V = (StickyListHeadersListView) view.findViewById(R.id.sticky_list_V);
+        list_V.setFastScrollEnabled(true);
     }
 
     @Override

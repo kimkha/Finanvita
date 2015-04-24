@@ -184,7 +184,7 @@ public abstract class GoogleApiFragment extends Fragment implements GoogleApiCli
                     .post(getConnectedEventClass().getConstructor(client.getClass())
                             .newInstance(client));
         }
-        catch (NoSuchMethodException | InvocationTargetException | java.lang.InstantiationException | IllegalAccessException e)
+        catch (Exception e)
         {
             e.printStackTrace();
         }
@@ -198,7 +198,7 @@ public abstract class GoogleApiFragment extends Fragment implements GoogleApiCli
                     .post(getDisconnectedEventClass().getConstructor(client.getClass())
                             .newInstance(client));
         }
-        catch (NoSuchMethodException | InvocationTargetException | java.lang.InstantiationException | IllegalAccessException e)
+        catch (Exception e)
         {
             e.printStackTrace();
         }
@@ -212,7 +212,7 @@ public abstract class GoogleApiFragment extends Fragment implements GoogleApiCli
                     .post(getFailedEventClass().getConstructor(client.getClass(), ConnectionResult.class)
                             .newInstance(client, connectionResult));
         }
-        catch (NoSuchMethodException | InvocationTargetException | java.lang.InstantiationException | IllegalAccessException e)
+        catch (Exception e)
         {
             e.printStackTrace();
         }

@@ -62,11 +62,12 @@ def getBuildName()
 
 dependencies {
     //compile files('libs/joda-time-2.3.jar')
+    compile project(':StickyListHeaders:library')
     compile 'org.beanshell:bsh-core:2.0b4'
     compile 'joda-time:joda-time:2.3'
     compile 'com.google.android.gms:play-services:+'
     compile 'de.greenrobot:eventbus:2.2.0'
-    compile 'se.emilsjolander:stickylistheaders:2.+'
+    //compile 'se.emilsjolander:stickylistheaders:2.+'
     compile 'com.squareup.okhttp:okhttp:1.3.0'
     compile 'com.squareup.retrofit:retrofit:1.3.0'
     compile 'com.mobeta.android.dslv:drag-sort-listview:0.6.1'
